@@ -1,0 +1,78 @@
+
+<div class="container">
+    <h2>Edit Claim Reimbursement!!</h2>
+   
+    <form [formGroup] ="editReimbursementForm"  (ngSubmit)="onEditReimbursementSubmit()">
+
+      <div class="form-group">       
+        <input type="text" class="form-control" hidden  placeholder="Enter ID *" formControlName="id"/>     
+    </div>
+    
+        <div class="form-group">       
+            <input type="text" class="form-control" hidden placeholder="Enter ID *" formControlName="empId"/>     
+        </div>
+
+        <div class="form-group">       
+          <input type="text" class="form-control" hidden formControlName="empName"/>     
+      </div>
+
+
+        <div class="form-group">
+              <label for="">Title:</label>
+              <input type="text"  class="form-control" placeholder="Enter Title *" formControlName="title"/>
+                  <span class="text-danger"
+                      *ngIf="editReimbursementForm.get('title').touched && editReimbursementForm.get('title').hasError('required')">
+                      Title Required*
+                 </span>
+        </div>
+
+              <div class="form-group">
+                  <div  class="sub-heading">Subject</div>
+                  <textarea class ="text-area" style="width: 621px;
+                  height: 100px;" formControlName="subject"></textarea>
+                      <span class="text-danger"
+                          *ngIf="editReimbursementForm.get('subject').touched && editReimbursementForm.get('subject').hasError('required')">
+                          Subject Required*
+                      </span>
+              </div>
+
+        
+       
+            <div class="form-group">
+                <label for="">Bill Date</label>
+                  <input type="date" class="form-control"  formControlName="billDate"/>
+                      <span class="text-danger"
+                          *ngIf="editReimbursementForm.get('billDate').touched && editReimbursementForm.get('billDate').hasError('required')">
+                          Bill Date Required*
+                      </span>
+              </div>
+
+           
+              <div class="form-group">
+                  <label for="">Amount</label>
+                  <input type="input" class="form-control" formControlName="amount" placeholder="Amount"/>
+                  <span class="text-danger"
+                          *ngIf="editReimbursementForm.get('amount').touched && editReimbursementForm.get('amount').hasError('required')">
+                          Amount Required*
+                      </span>
+              </div>
+
+
+              <div class="form-group">              
+                <input type="input" class="form-control" formControlName="status" placeholder="Amount"/>
+            </div>
+
+
+              <div class="form-group">
+            
+                <input type="input" class="form-control" hidden formControlName="higherAuth"/>
+            </div>
+
+            <div class="form-group">
+            
+              <input type="input" class="form-control" hidden formControlName="highAuthName">
+          </div>
+          
+        <input type="submit" style="width: 160px" class="btn btn-success" value="Update"/>
+      </form>
+    </div> 

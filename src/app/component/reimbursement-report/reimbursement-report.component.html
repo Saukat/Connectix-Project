@@ -1,0 +1,32 @@
+   
+<!-- <div class="container" *ngIf="fetching"> -->
+<div class="container">
+
+    <a (click)="dynamicDownloadTxt()">
+        <div></div>
+        <span class="btn btn-info" style="margin-left: 362px;">download Txt</span></a>
+    <div class="form-group">
+        
+         <ul>
+            <li>
+                <!-- <span>{{fhrData}}</span><br> -->
+                <!-- <span><b>FHR</b></span>|<span>15/08/03/2020</span>|<span><Cutt-off</span>|<span><b>{{totalcost}}</b></span>|INR|<span>006105027372</span>|<span>00111^</span> -->
+                {{fhrData}}
+            </li>
+            <li>
+                <!-- <span>{{mdrData}}</span> totalcost -->
+                <!-- <span><b>MDR</b></span>|<span #dataa>006105027372</span>|<span>0011</span>|<span>570518395</span>|<span #dataa><b>{{totalcost}}</b></span>|INR|<span><b>{{date}}</b></span>|<span>ICICI0000011</span>|<span>WIB^</span> -->
+                {{mdrData}}
+             </li>
+         </ul>
+        <ul *ngFor="let payroll of allDataOfPayroll">
+            <li >
+                
+                <div>
+                    <span><b>MCW</b></span>|<span #dataa>{{payroll.accNo}}</span>|<span><b>0011</b></span>|{{payroll.name}}|<span>{{payroll.amount}}</span>|<span><b>INR</b></span>|{{payroll.salaryMonth}}|<span><b>ICIC0000011</b></span>|<span>WIB^</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- <h2 class="text-center" *ngIf="!fetching">{{noData}}</h2> -->

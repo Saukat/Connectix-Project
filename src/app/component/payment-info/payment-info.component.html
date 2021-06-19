@@ -1,0 +1,105 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Employee Payment Info!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="paymentInfoData" (ngSubmit)="onPaymentInfoForm()">
+                 
+                 <div class="form-group">
+                    <!-- <label for="">Employee Id:</label> -->
+                    <input type="text"  hidden class="form-control" [(ngModel)]="id" placeholder="Enter Employee Id *" formControlName="id" />
+                  </div>
+
+                
+                 
+                  <div class="form-group">
+                    <label for="">Aadhar no:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Aadhar Number*"  formControlName="aadhar" />
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('aadhar').touched && paymentInfoData.get('aadhar').hasError('required')">
+                    Aadhar Required*
+                </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Account Number:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your Account Number *" formControlName="accNo"/>
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('accNo').touched && paymentInfoData.get('accNo').hasError('required')">
+                    Account No. Required*
+                </span>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="">Bank Name:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your Bank Name *" formControlName="bankName"/>
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('bankName').touched && paymentInfoData.get('bankName').hasError('required')">
+                    Bank Name Required*
+                </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">ESI Number:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your ESI Number *" formControlName="esiNo"/>
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('esiNo').touched && paymentInfoData.get('esiNo').hasError('required')">
+                    ESI Number Required*
+                </span>
+                  </div>
+
+                
+
+                  <div class="form-group">
+                     <label for="">IFSC Code:</label>
+                     <input type="text" class="form-control" placeholder="Enter IFSC Code *" formControlName="ifscCode" />
+                     <span class="text-danger"
+                     *ngIf="paymentInfoData.get('ifscCode').touched && paymentInfoData.get('ifscCode').hasError('required')">
+                     IFSC Code Required*
+                 </span>
+                    </div> 
+
+                  <div class="form-group">
+                    <label for="">EPFO:</label>
+                    <input type="text" class="form-control" placeholder="Enter EPFO " formControlName="epfo" />
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('epfo').touched && paymentInfoData.get('epfo').hasError('required')">
+                    EPFO Required*
+                </span>
+                  </div> 
+
+                 <div class="form-group">
+                    <label for="">Branch:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your Bank Branch *" formControlName="branch"/>
+                    <span class="text-danger"
+                    *ngIf="paymentInfoData.get('branch').touched && paymentInfoData.get('branch').hasError('required')">
+                    Branch Required*
+                </span>
+                  </div>
+
+                
+
+                  <div class="form-group">
+                     <label for="">Address:</label>
+                     <input type="text" class="form-control" placeholder="Enter Bank Address *" formControlName="address" />
+                     <span class="text-danger"
+                     *ngIf="paymentInfoData.get('address').touched && paymentInfoData.get('address').hasError('required')">
+                     Address Required*
+                 </span>
+                    </div> 
+
+
+              <input type="submit" style="width: 160px" [disabled]="!paymentInfoData.valid" class="btn btn-success"  value="Save Payment Info"/>
+            </form>
+          </div>
+         
+        </div>
+       
+  
+      </div>

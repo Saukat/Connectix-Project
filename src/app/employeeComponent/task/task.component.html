@@ -1,0 +1,100 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 text-center">Task Form!!</h3>
+            <span class="card bg-danger text-white text-center" *ngIf="islogin">500 Server Side Problem!!</span>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="taskForm" (ngSubmit)="onTaskForm()">
+              
+             
+              <div class="form-group">
+                  <!-- <label for="">HigherAuthId ID:</label> -->
+                  <input type="text" hidden  class="form-control" [(ngModel)]="id" placeholder="Enter ID *" formControlName="higherAuthId"/>
+                      <!-- <span class="text-danger"
+                          *ngIf="taskForm.get('higherAuthId').touched && taskForm.get('higherAuthId').hasError('required')">
+                          ID Required*
+                     </span> -->
+              </div>
+
+              <div class="form-group">
+                     
+                <input type="text" hidden class="form-control" [(ngModel)]="name"  formControlName="higherAuthName"/>
+          </div>
+
+
+              <div class="form-group">
+                    <label for="">Project Name:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Project Name *" formControlName="projectName"/>
+                        <span class="text-danger"
+                            *ngIf="taskForm.get('projectName').touched && taskForm.get('projectName').hasError('required')">
+                            Project Name Required*
+                       </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Title:</label>
+                <input type="text"  class="form-control" placeholder="Enter Project Title *" formControlName="title"/>
+                    <span class="text-danger"
+                        *ngIf="taskForm.get('title').touched && taskForm.get('title').hasError('required')">
+                        Project Title Required*
+                   </span>
+          </div>
+
+                    <div class="form-group">
+                        <div  class="sub-heading">Description</div>
+                        <textarea class ="text-area" style="width: 621px;
+                        height: 100px;" formControlName="description"></textarea>
+                            <span class="text-danger"
+                                *ngIf="taskForm.get('description').touched && taskForm.get('description').hasError('required')">
+                                Description Required*
+                            </span>
+                    </div>
+
+
+                  <div class="form-group">
+                        <label for="">Expected Time(Hours):</label>
+                        <input type="text" class="form-control"  formControlName="timeAndDate"/>
+                            <span class="text-danger"
+                                *ngIf="taskForm.get('timeAndDate').touched && taskForm.get('timeAndDate').hasError('required')">
+                                Expected Time(Hours) Required*
+                            </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Work Assign To:</label>
+
+                        <select class="form-select" formControlName="employeeId" (change)="replaceDDL($event)">
+                            <option *ngFor="let data of empIdAndName; let i = index" [value]="data.id" >{{data.name}}</option> 
+                        </select>
+                
+                    <span class="text-danger"
+                        *ngIf="taskForm.get('employeeId').touched && taskForm.get('employeeId').hasError('required')">
+                        Select Employee*
+                    </span>
+    
+                    </div>
+
+                 <div class="form-group">
+                     
+                      <input type="text" class="form-control" [(ngModel)]="replacementName"  formControlName="employeeName"/>
+                </div>
+
+              <div class="form-group">
+                    <label for="">Status:</label><br>
+                    <input type="text" class="form-control"  formControlName="status"/>
+              </div>
+
+              <input type="submit" style="width: 160px" class="btn btn-success" [disabled]="!taskForm.valid" value="Task Send"/>
+            </form>
+            <mat-progress-spinner  style="margin:0 auto;" mode="indeterminate" *ngIf="!fetching">
+            </mat-progress-spinner>
+          </div>
+         
+        </div>
+       
+  
+      </div>

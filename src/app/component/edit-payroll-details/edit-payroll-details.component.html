@@ -1,0 +1,263 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 text-center">Edit Payroll Details!!</h3>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="editPayrollForm" (ngSubmit)="onEditPayrollForm()">
+              
+
+
+              <div class="form-group">
+                <!-- <label for="">Payroll ID: 
+                  
+                </label>-->
+                <input type="text" hidden class="form-control" placeholder="Enter Emp ID *" formControlName="payrollId"/>
+              </div>
+
+
+              <div class="form-group">
+                <!-- <label for="">Employee Id given by mongo: 
+                  
+                </label>-->
+                <input type="text" hidden class="form-control" placeholder="Enter Emp ID *" formControlName="id"/>
+              </div>
+
+
+              <div class="form-group">
+                <label for="">Total Days:</label>
+                  
+                
+                <input type="text"  class="form-control" [(ngModel)]="numberOfDays"  formControlName="monthMaxDays"/>
+              </div>
+
+
+                <div class="form-group">
+                    <label for="">Name:</label>
+                    <input type="text" class="form-control" disabled placeholder="Enter Your Name *" formControlName="name" />
+                    <span class="text-danger"
+                    *ngIf="editPayrollForm.get('name').touched && editPayrollForm.get('name').hasError('required')">
+                    Name Required*
+                </span>
+                  </div>
+                 
+
+                  <div class="form-group">
+                    <label for="">Current Month Ctc:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your monthCtc *" formControlName="totalCostToCompany" />
+                    <span class="text-danger"
+                    *ngIf="editPayrollForm.get('totalCostToCompany').touched && editPayrollForm.get('totalCostToCompany').hasError('required')">
+                    TotalCostToCompany Required*
+                </span>
+                  </div>
+                  
+                  <!-- <div class="form-group">
+                     <label for="">Salary on Which month:</label>
+                      <input type="text" class="form-control"  formControlName="salaryMonth" />
+                      <span class="text-danger"
+                      *ngIf="editPayrollForm.get('salaryMonth').touched && editPayrollForm.get('salaryMonth').hasError('required')">
+                      Salary on Which month Required*
+                  </span>
+                    </div> -->
+                    
+
+
+                <!-- <div class="form-group">
+                  <input type="date" class="form-control" name="datepicker" id="datepicker" (change)="datepicker($event)"/>
+                </div> -->
+
+
+<div>
+  <label for="">Select Month And Year:</label><br>
+  <input type="text" class="form-control" [(ngModel)]="monthAndYears" formControlName="salaryMonth"/>
+  <select class="form-select" (change)="monthFun($event)">
+    <option>--Months--</option>
+      <option value="JANUARY">JANUARY</option>
+      <option value="FEBRUARY">FEBRUARY</option>
+      <option value="MARCH">MARCH</option>
+      <option value="APRIL">APRIL</option>
+      <option value="MAY">MAY</option>
+      <option value="JUNE">JUNE</option>
+      <option value="JULY">JULY</option>
+      <option value="AUGUST">AUGUST</option>
+      <option value="SEPTEMBER">SEPTEMBER</option>
+      <option value="OCTOBER">OCTOBER</option>
+      <option value="NOVEMBER">NOVEMBER</option>
+      <option value="DECEMBER">DECEMBER</option>
+  </select>
+
+  <select class="form-select" (change)="yearFun($event)">
+    <option>--Years--</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+    <option value="2025">2025</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+    <option value="2031">2031</option>
+    <option value="2032">2032</option>
+</select>
+<div *ngIf="flag" class="alert alert-danger">
+  <div *ngIf="flag">{{alerts}}</div>
+</div>
+</div>
+                      
+
+
+                    <div class="form-group">
+                      <label for="">Gross Salary:</label>
+                      <input type="text" class="form-control" formControlName="grossPay" />
+                      <span class="text-danger"
+                      *ngIf="editPayrollForm.get('grossPay').touched && editPayrollForm.get('grossPay').hasError('required')">
+                      GrossPay Required*
+                  </span>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">net Salary:</label>
+                      <input type="text" class="form-control"  [(ngModel)]="netSal"  formControlName="netSalary" />
+                      <span class="text-danger"
+                     *ngIf="editPayrollForm.get('netSalary').touched && editPayrollForm.get('netSalary').hasError('required')">
+                     NetSalary Required*
+                 </span>
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label for="">net Salary:</label>
+                      <input type="text" class="form-control"  [(ngModel)]="netSal"  formControlName="netSalary" />
+                      <span class="text-danger"
+                     *ngIf="editPayrollForm.get('netSalary').touched && editPayrollForm.get('netSalary').hasError('required')">
+                     NetSalary Required*
+                 </span> 
+                    </div>-->
+
+                    <!-- <div class="form-group">
+                      <label for="">net Salary:</label>
+                      <input type="text" class="form-control"  [(ngModel)]="netSal"  formControlName="netSalary" />
+                    </div> -->
+
+                    <!-- <div class="form-group">
+                      <label for="">net Salary:</label>
+                      <input type="text" class="form-control"   formControlName="netSalary" />
+                    </div> -->
+              
+              
+              <div class="form-group">
+                <label for="">addition:</label>
+                <input type="text"  class="form-control" (keyup)="onDbClickForAddition($event)"   placeholder="Calculate Addition on Salary*" formControlName="addition"/>
+                <span class="text-danger"
+                *ngIf="editPayrollForm.get('addition').touched && editPayrollForm.get('addition').hasError('required')">
+                Addition Required*
+            </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Addition Remark:</label>
+                <input type="text"  class="form-control"   placeholder="Enter Addition Remark" formControlName="addtionRemark"/>
+                <span class="text-danger"
+                *ngIf="editPayrollForm.get('addtionRemark').touched && editPayrollForm.get('addtionRemark').hasError('required')">
+                Addition Remark Required*
+            </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Deduction:</label>
+                <input type="text"  class="form-control"  (keyup)="onDbClickForDeduction($event)" formControlName="deduction"/>
+                <span class="text-danger"
+                *ngIf="editPayrollForm.get('deduction').touched && editPayrollForm.get('deduction').hasError('required')">
+                Deduction Required*
+            </span>
+              </div>
+              
+              <div class="form-group">
+                <label for="">Deduction Remark:</label>
+                <input type="text"  class="form-control" placeholder="Enter Deduction Remark" formControlName="deductionRemark"/>
+                <span class="text-danger"
+                *ngIf="editPayrollForm.get('deductionRemark').touched && editPayrollForm.get('deductionRemark').hasError('required')">
+                Deduction Reamrk Required*
+            </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Paid Holiday:</label>
+                <input type="text"  class="form-control"   formControlName="paidHoliday"/>
+                <span class="text-danger"
+                     *ngIf="editPayrollForm.get('paidHoliday').touched && editPayrollForm.get('paidHoliday').hasError('required')">
+                     Paid Holiday Required*
+                 </span>
+              </div>      
+              
+              <div class="form-group">
+                <label for="">UnPaid Holiday:</label>
+                <input type="text"  class="form-control"   formControlName="unPaidHoliday"/>
+                <span class="text-danger"
+                     *ngIf="editPayrollForm.get('unPaidHoliday').touched && editPayrollForm.get('unPaidHoliday').hasError('required')">
+                     UnPaid Holiday Required*
+                 </span>
+              </div>  
+
+               
+              <div class="form-group">
+                <!-- <label for="">Adjustments if any:</label> -->
+                <input type="text" hidden  class="form-control" (keyup)="onDbClickForAdjustments($event)" placeholder="Adjustments if any*" formControlName="reimbursements"/>
+                <span class="text-danger"
+                     *ngIf="editPayrollForm.get('reimbursements').touched && editPayrollForm.get('reimbursements').hasError('required')">
+                     Adjustments Required*
+                 </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Remark:</label>
+                <input type="text" class="form-control" [(ngModel)]="salaryFor" formControlName="remark" />
+                <span class="text-danger"
+                     *ngIf="editPayrollForm.get('remark').touched && editPayrollForm.get('remark').hasError('required')">
+                     Remark Required*
+                 </span>
+              </div>
+             
+              <div class="form-group">
+                <label for="">Status:</label>
+                <select class="form-select" formControlName="status">
+                  <option value="Final">Final</option>
+                  <option value="Process">Process</option>
+                </select>
+               
+                <!-- <input type="text"  class="form-control"  placeholder="Enter Your Status *" formControlName="status"/>
+                <span class="text-danger"
+                *ngIf="editPayrollForm.get('status').touched && editPayrollForm.get('status').hasError('required')">
+                Status Required*
+            </span> -->
+              </div>
+
+              <!-- <label for="">Leave Type:</label><br>
+              <select class="form-select" formControlName="leaveType">
+                  <option value="sick">Sick</option>
+                  <option value="privilege">Privilege</option>
+              </select>
+      
+          <span class="text-danger"
+              *ngIf="leaveAttendanceForm.get('leaveType').touched && leaveAttendanceForm.get('leaveType').hasError('required')">
+              Leave Type Required*
+          </span> -->
+
+
+
+
+              <input type="submit" style="width: 160px" class="btn btn-success"  value="Update Payroll "/>
+            </form>
+          </div>
+         
+        </div>
+      </div>
+  
+   </div>
+</div>   
+  

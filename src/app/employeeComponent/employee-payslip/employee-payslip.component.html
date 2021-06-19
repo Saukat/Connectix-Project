@@ -1,0 +1,213 @@
+
+<div style="    margin-left: 73%;
+margin-top: 30px;
+position: absolute;">
+    <input type="button" class="btn btn-info" value="Download PDF" (click)="convetToPDF()"/>
+</div>
+<div class="container" id="contentToConvert" style="width: 900px; margin-top: 70px;">
+    <div>&nbsp;</div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-9">
+                <h2 class="text-primary text-center">Connectix Software & Services Pvt. Ltd.</h2><hr class="bg-primary">
+             </div>
+             <div class="col-md-3">
+                
+                    <img [src]="photo" alt="Image Source"  style="width:80px;margin-left: 48px; margin-top: 10px;">
+                     <p>Private and Confidentials</p>
+                   
+                  
+             </div>
+        </div>    
+        <b style="margin-left: 514px">Pay Slip For the Month of &nbsp;{{empPayroll?.salaryMonth}}</b>
+    </div>
+     <div class="form-group">
+          <div class="row">
+              <div class="col-md-6">
+                 <table class="table tbl_r ">
+                       <tr>
+                              <td>No of Days in Month</td>
+                              <td >{{empPayroll?.monthMaxDays}}</td>
+                       </tr>
+                       <tr>
+                               <td>No of Unpaid Holiday</td>
+                               <td>{{empPayroll?.unPaidHoliday}}</td>   
+                       </tr>
+                       <tr>
+                                <td>No of Paid Holiday</td>
+                                <td>{{empPayroll?.paidHoliday}}</td>   
+                       </tr>
+                       <tr style="border: 0px!important;height:29px;"></tr>
+
+                      <tr>
+                              <td>No of Paid Days(for Entire Month)</td>
+                              <td>{{empPayroll?.monthMaxDays}}</td>
+                       </tr>
+                 </table>
+              </div>
+             
+              <div class="col-md-6">
+                <table class="table table-bordered">
+                     <td colspan="2">
+                       Name:{{empRegData?.title}}&nbsp;{{empRegData?.name}}
+                     </td>
+                       
+                    <tr>
+                           <td>Employee Number</td>
+                           <td>{{empRegData?.employeeId}}</td>
+                    </tr>
+                    <tr>
+                            <td>Position</td>
+                            <td>{{empRegData?.jobTitle}}</td>   
+                    </tr>
+                    <tr>
+                             <td>Employement Type</td>
+                             <td>{{empRegData?.rollType}}</td>   
+                    </tr>
+                    <tr>
+                            <td>Date of Joining</td>
+                            <td>{{empRegData?.hireDate  | date: 'dd/MM/yyyy'}}</td>   
+                    </tr>
+              </table>
+              </div>
+          </div> 
+
+          <div class="row">
+            <div class="col-md-6">
+                <h4>Earning</h4>
+               <table class="table table-bordered tbl_r">
+                     <tr>
+                            <td>Monthly Basic Salary</td>
+                            <td>₹{{empSingleSal?.basic}}.00</td>
+                     </tr>
+                     <tr>
+                             <td>House Rent Allowance</td>
+                             <td>₹{{empSingleSal?.hra}}.00</td>  
+                     </tr>
+                      <tr>
+                              <td>Conveyance Allowanec</td>
+                              <td>₹{{empSingleSal?.conveyanceAllowance}}.00</td>  
+                     </tr>
+                     <tr>
+                              <td>Other Allowance</td>
+                              <td>₹{{empSingleSal?.otherAllowance}}.00</td>                        
+                     </tr>
+
+                     <tr>
+                        <td *ngIf="empPayroll?.addtionRemark else addList">Addition({{empPayroll?.addtionRemark}})</td>
+                        <ng-template #addList>
+                            <td>Addition</td>
+                        </ng-template>
+                        <td>₹{{empPayroll?.addition}}.00</td>                        
+                     </tr>
+                     <tr style="border: 0px!important;height:29px;"></tr>
+                    <tr>
+                            <td>Gross Total</td>
+                            <td>₹{{empSingleSal?.grossPay}}.00</td>  
+                     </tr>
+               </table>
+            </div>
+           
+
+            <div class="col-md-6">
+                <h4>Deductions</h4>
+              <table class="table table-bordered tbl_r">
+                  
+                     
+                  <tr>
+                         <td>Employee Contribution to EPF</td>
+                          <td>₹{{empSingleSal?.employeeEpf}}.00</td>  
+                  </tr>
+                  <tr>
+                    <td>Employee Contribution to ESI</td>
+                    <td>₹{{empSingleSal?.employeeESI}}.00</td> 
+                  </tr>
+                  <tr>
+                    <td *ngIf="empPayroll?.deductionRemark else emptyList">Deduction({{empPayroll?.deductionRemark}})</td>
+                    <ng-template #emptyList>
+                        <td>Deduction</td>
+                    </ng-template>
+                    <td>₹{{empPayroll?.deduction}}.00</td> 
+                  </tr>
+                  <tr style="border: 0px!important;height:29px;"></tr>
+                  <tr style="border: 0px!important;height:29px;"></tr>
+                  <tr style="border: 0px!important;height:29px;"></tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>₹{{totalEmpFund}}.00</td>  
+             </tr>
+                 
+            </table>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-md-6">
+              
+            </div>
+           
+            <div class="col-md-6">
+              <table class="table table-bordered tbl_r">
+                   
+                     
+                  <!-- <tr>
+                         <td>Adjustments if any</td>
+                         <td>₹{{empPayroll?.deduction}}</td>
+                  </tr> -->
+                  <tr>
+                          <td>Take Home Net(Rounded)</td>
+                          <td>₹{{empPayroll?.netSalary}}.00</td>  
+ 
+                  </tr>
+                  
+            </table>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-md-6">
+               <table class="table">
+                     <thead>
+                         <tr>
+                             <th>Processing Date</th>
+                             <th>Bank Name</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                             <td>{{empPayroll?.monthMaxDays}}-{{empPayroll?.salaryMonth}}</td>
+                             <td>{{empPaymentInfo?.bankName}}</td>
+
+                        </tr>
+                        <tr>
+                            <td>PF UAN</td>
+                            <td>{{empPaymentInfo?.epfo}}</td>
+                     </tr>
+                     <tr>
+                             <td>ESI Number</td>
+                             <td>{{empPaymentInfo?.esiNo}}</td>   
+                     </tr>
+                     </tbody>
+               </table>
+            </div>
+         
+            <div class="col-md-6">
+              <table class="table">
+                <thead>
+                    <tr>
+                        <th>Account No</th>
+                        <th>Cheque Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">{{empPaymentInfo?.accNo}}</td>
+                        <td class="text-center">N/A</td>
+                   </tr>
+                </tbody>
+            </table>
+            </div>
+        </div> 
+ <p class="text-center">This Payslip is computer generated and doesn't require any signature</p>
+      </div>
+</div>

@@ -1,0 +1,138 @@
+<div class="row" style="margin-top: 28px;margin-left: 302px;">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Approve Report!!</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+        
+                                <div>
+                                    <div>
+                                        <label><b>Title: </b></label>{{approveData.title}}
+                                    </div>
+                                    <div>
+                                        <label><b>Subject: </b></label>{{approveData.subject}}
+                                    </div>
+                                    <div>
+                                        <label><b>From: </b></label>{{approveData.from}}
+                                    </div>
+                                    <div>
+                                        <label><b>To: </b></label>{{approveData.to}}
+                                    </div>
+
+                                    <div>
+                                      <label><b>Applied By: </b></label>{{approveData.empId}}
+                                    </div>
+                                    
+                                    <div>
+                                        <label><b>Leave Taken Days: </b></label>{{approveData.numberOfDays}}
+                                    </div>
+                                    <div>
+                                        <label><b>Leave Type: </b></label>{{approveData.leaveType}}
+                                    </div>
+                                    <div>
+                                        <label><b>Status: </b></label>{{approveData.status}}
+                                    </div>
+                                    <div>
+                                        <label><b>Substitute: </b></label>{{approveData.backupEmpId}}
+                                    </div>
+                                    <div>
+                                      <label><b>Remark: </b></label>{{approveData.repAuthRemark}}
+                                  </div>
+                                </div>
+
+                          </div>
+                          <!-- [disabled]="!status" -->
+                          <div class="col-md-4">
+                            <button (click)="openDialog(template)" [disabled]="!status" mat-raised-button color="primary">Response on Approve</button><br><br>
+                            <!-- <button (click)="nonApprovalReport(nonApprove)" class="btn btn-primary">Reject</button><br><br> -->
+                         </div>
+                         
+                         
+                           
+                       
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+
+  <!--approve-->
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Approval form!!</h4>
+      <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="leaveApprovalForm" (ngSubmit)="onleaveApproval()">
+        
+        <div class="form-group">
+          <!-- <label for="">Id:  
+          </label> -->
+          <input type="text" hidden class="form-control" [(ngModel)]="leaveId" placeholder="Enter Emp ID *" formControlName="id"/>
+         <!-- <span class="text-danger"
+          *ngIf="employeeRegForm.get('employeeId').touched && employeeRegForm.get('employeeId').hasError('required')">
+          ID Required*
+        </span> -->
+        </div>
+
+
+        <div class="form-group">
+          <label for="">Leave Approval(Yes/No):</label><br>
+          <input  type="radio" value="Approved" name="status" formControlName="status"> Yes
+          <input type="radio" value="Reject" name="status" formControlName="status"> No
+      
+          <span class="text-danger"
+          *ngIf="leaveApprovalForm.get('status').touched && leaveApprovalForm.get('status').hasError('required')">
+          Approval Required*
+        </span>
+
+        <div class="form-group">
+            <div  class="sub-heading">repAuthRemark</div>
+            <textarea class ="text-area" formControlName="repAuthRemark"></textarea>
+              <span class="text-danger"
+                  *ngIf="leaveApprovalForm.get('repAuthRemark').touched && leaveApprovalForm.get('repAuthRemark').hasError('required')">
+                  repAuthRemark Required*
+              </span>
+       </div>
+
+       <div class="row">
+          <div class="col-md-6">
+              <input type="submit" style="width: 160px" mat-raised-button color="primary"  [disabled]="!leaveApprovalForm.valid" value="Submit"/>
+          </div>
+          <div class="col-md-6">
+              <div mat-dialog-actions style="margin-top: -9px;margin-left: 59px">
+                  <button mat-button mat-dialog-close>Close</button>
+                </div>
+          </div>
+       
+     </div>
+       <!-- <input type="submit" style="width: 160px" class="btn btn-success" [disabled]="!leaveApprovalForm.valid" value="Submit"/> -->
+
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+
+<!--approve-->
+<!-- <ng-template #nonApprove>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Approve form!!</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Plz Approve
+    </div>
+  </ng-template> -->

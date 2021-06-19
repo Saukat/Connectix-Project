@@ -1,0 +1,111 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 text-center">Leave Form!!</h3>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="leaveAttendanceForm" (ngSubmit)="onLeaveAttendanceForm()">
+              
+             
+              <div class="form-group">
+                  <!-- <label for="">ID:</label> -->
+                  <input type="text" hidden class="form-control" [(ngModel)]="id" placeholder="Enter ID *" formControlName="empId"/>
+                      <span class="text-danger"
+                          *ngIf="leaveAttendanceForm.get('empId').touched && leaveAttendanceForm.get('empId').hasError('required')">
+                          ID Required*
+                     </span>
+              </div>
+
+
+              <div class="form-group">
+                    <label for="">Title:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Title *" formControlName="title"/>
+                        <span class="text-danger"
+                            *ngIf="leaveAttendanceForm.get('title').touched && leaveAttendanceForm.get('title').hasError('required')">
+                            Title Required*
+                       </span>
+              </div>
+
+                    <div class="form-group">
+                        <div  class="sub-heading">Subject</div>
+                        <textarea class ="text-area" style="width: 621px;
+                        height: 100px;" formControlName="subject"></textarea>
+                            <span class="text-danger"
+                                *ngIf="leaveAttendanceForm.get('subject').touched && leaveAttendanceForm.get('subject').hasError('required')">
+                                Subject Required*
+                            </span>
+                    </div>
+              <div>
+                <label for="">Days Taken</label>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">From:</label>
+                        <input type="date" class="form-control"  formControlName="from" (change)="fromDate($event)"/>
+                            <span class="text-danger"
+                                *ngIf="leaveAttendanceForm.get('from').touched && leaveAttendanceForm.get('from').hasError('required')">
+                                From Required*
+                            </span>
+                    </div>
+
+                 <div class="col-md-4">
+                        <label for="">To:</label>
+                        <input type="date" class="form-control"  formControlName="to" (change)="toDate($event)"/>
+                            <span class="text-danger"
+                                *ngIf="leaveAttendanceForm.get('to').touched && leaveAttendanceForm.get('to').hasError('required')">
+                                From Required*
+                            </span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">Total Day Leave:</label>
+                        <input type="input" class="form-control" [(ngModel)]="totalDayLeave"  formControlName="numberOfDays" placeholder="Total Days"/>
+                        <span class="text-danger"
+                                *ngIf="leaveAttendanceForm.get('numberOfDays').touched && leaveAttendanceForm.get('numberOfDays').hasError('required')">
+                                From Required*
+                            </span>
+                    </div>
+
+                </div>
+              </div>
+                
+              
+
+
+                <div class="form-group">
+                        <label for="">Leave Type:</label><br>
+                            <select class="form-select" formControlName="leaveType">
+                                <option value="sick">Sick</option>
+                                <option value="privilege">Privilege</option>
+                            </select>
+                    
+                        <span class="text-danger"
+                            *ngIf="leaveAttendanceForm.get('leaveType').touched && leaveAttendanceForm.get('leaveType').hasError('required')">
+                            Leave Type Required*
+                        </span>
+                </div>
+
+              <div class="form-group">
+                    <label for="">Substitute:</label><br>
+                    <select class="form-select" formControlName="backupEmpId" (change)="replaceDDL($event)">
+                      <option *ngFor="let data of empIdAndName; let i = index" [value]="data.id" >{{data.name}}</option>
+
+                    </select>
+                    <span class="text-danger"
+                        *ngIf="leaveAttendanceForm.get('backupEmpId').touched && leaveAttendanceForm.get('backupEmpId').hasError('required')">
+                        Substitute Required*
+                    </span>
+              </div>
+              <input type="submit" style="width: 160px" class="btn btn-success" [disabled]="!leaveAttendanceForm.valid" value="Save"/>
+            </form>
+            <mat-progress-spinner  style="margin:0 auto;" mode="indeterminate" *ngIf="fetching">
+            </mat-progress-spinner>
+          </div>
+         
+        </div>
+       
+  
+      </div>

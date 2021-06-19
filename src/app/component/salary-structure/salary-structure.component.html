@@ -1,0 +1,129 @@
+
+
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card rounded-0">
+        <div class="card-header">
+          <h4 class="mb-0 text-center">Employee Salary Structure!!</h4>
+          <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+        </div>
+        <div class="card-body">
+          <form [formGroup]="salaryStructure" (ngSubmit)="onsalaryStructureForm()">
+               
+               <div class="form-group">
+                  <!-- <label for="">Employee Id:</label> -->
+                  <input type="text" hidden class="form-control" [(ngModel)]="id" placeholder="Enter Employee Id *" formControlName="id" />
+                </div>
+
+              
+               
+              
+
+      
+
+                <div class="form-group">
+                  <label for="">Basic:</label>
+                  <input type="text" (keyup)="basicSalryCalculation($event)" class="form-control"  placeholder="Enter Basic Salary*"  formControlName="basic"/>
+                  <span class="text-danger"
+                    *ngIf="salaryStructure.get('basic').touched && salaryStructure.get('basic').hasError('required')">
+                    Basic Salary Required*
+                </span>
+                </div>
+
+                <div class="form-group">    
+                  <label for="">HRA:</label>        
+                   <input type="text" class="form-control" [(ngModel)]="Hra"  placeholder="Enter HRA *" formControlName="hra" />
+                   <span class="text-danger"
+                   *ngIf="salaryStructure.get('hra').touched && salaryStructure.get('hra').hasError('required')">
+                   HRA  Required*
+               </span>
+                  </div> 
+
+                <div class="form-group">
+                  <label for="">Conveyance Allowance:</label>
+                  <input type="text" class="form-control" [(ngModel)]="cAlloance"  disabled formControlName="conveyanceAllowance" />
+                  <span class="text-danger"
+                  *ngIf="salaryStructure.get('conveyanceAllowance').touched && salaryStructure.get('conveyanceAllowance').hasError('required')">
+                  conveyanceAllowance  Required*
+              </span>
+                </div> 
+            
+               <div class="form-group">
+                  <label for="">Other Variable Allowance:</label>
+                  <input type="text"  class="form-control" [(ngModel)]="ovAlloance" formControlName="otherAllowance"/>
+                <span class="text-danger"
+                  *ngIf="salaryStructure.get('otherAllowance').touched && salaryStructure.get('otherAllowance').hasError('required')">
+                  OtherAllowance  Required*
+              </span>
+                </div>
+
+                <div class="form-group">
+                  <label for="">Gross Pay:</label>
+                  <input type="text"  class="form-control" [(ngModel)]="grossPay" formControlName="grossPay"/>
+                  <span class="text-danger"
+                  *ngIf="salaryStructure.get('grossPay').touched && salaryStructure.get('grossPay').hasError('required')">
+                  GrossPay  Required*
+              </span>
+               
+                </div>
+
+                <div class="form-group">
+                   <label for="">Employee's Contribution to EPF</label>
+                   <input type="text" class="form-control" [(ngModel)]="empEpf" formControlName="employeeEpf" />
+                   <span class="text-danger"
+                   *ngIf="salaryStructure.get('employeeEpf').touched && salaryStructure.get('employeeEpf').hasError('required')">
+                   EmployeeEpf  Required*
+               </span>
+                  </div> 
+                <div class="form-group">
+                  <label for="">Employee's Contribution to ESI</label>
+                  <input type="text" class="form-control" [(ngModel)]="empEsi" formControlName="employeeESI" />
+                  <span class="text-danger"
+                  *ngIf="salaryStructure.get('employeeESI').touched && salaryStructure.get('employeeESI').hasError('required')">
+                  employeeESI  Required*
+              </span>
+                </div> 
+
+                <div class="form-group">
+                  <label for="">Net Salary:</label>
+                  <input type="text" class="form-control" [(ngModel)]="netPay" formControlName="netSalary" />
+                  <span class="text-danger"
+                  *ngIf="salaryStructure.get('netSalary').touched && salaryStructure.get('netSalary').hasError('required')">
+                  NetSalary  Required*
+              </span>
+                </div>
+
+               <div class="form-group">
+                <label for="">Employer's Contribution to EPF</label>
+                <input type="text" class="form-control" [(ngModel)]="emprEpf" formControlName="employerEpf" />
+                <span class="text-danger"
+                *ngIf="salaryStructure.get('employerEpf').touched && salaryStructure.get('employerEpf').hasError('required')">
+                EmployerEpf  Required*
+            </span>
+              </div> 
+
+             <div class="form-group">
+              <label for="">Employer's Contribution to ESI</label>
+              <input type="text" class="form-control" [(ngModel)]="emprEsi" formControlName="employerESI" />
+              <span class="text-danger"
+              *ngIf="salaryStructure.get('employerESI').touched && salaryStructure.get('employerESI').hasError('required')">
+              EmployerESI  Required*
+          </span>
+            </div> 
+
+           <div class="form-group">
+            <label for="">Total Cost to Company</label>
+            <input type="text" class="form-control" [(ngModel)]="totalCompanyCost" formControlName="totalCostToCompany" />
+            <span class="text-danger"
+            *ngIf="salaryStructure.get('totalCostToCompany').touched && salaryStructure.get('totalCostToCompany').hasError('required')">
+            TotalCostToCompany  Required*
+        </span>
+          </div> 
+                
+            <input type="submit" style="width: 266px;" class="btn btn-primary text-center" [disabled]="!salaryStructure.valid" value="Save Salary Structure"/>
+          </form>
+        </div>
+       
+      </div>
+    </div>

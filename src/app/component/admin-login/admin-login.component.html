@@ -1,0 +1,64 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <span class="anchor" id="formLogin"></span>
+  
+        
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 text-center">Login Page</h3>
+            <span class="card bg-danger text-white text-center" *ngIf="status">{{status}}</span>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="adminloginForm" (ngSubmit)="onLoginForm()">
+              <div class="form-group">
+                <select class="mdb-select md-form"  #mySelect (change)='onOptionsSelected(mySelect.value)'>
+                  <option value="" disabled selected>Choose User Type</option>
+                  <option value="1">Admin Login</option>
+                  <option value="2">Employee Login</option>
+                
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Email:</label>
+                <input type="email" class="form-control" placeholder="Enter Your Email *" formControlName="email" />
+                <span class="text-danger"
+                    *ngIf="adminloginForm.get('email').touched && adminloginForm.get('email').hasError('required')">
+                    Email Required*
+                </span>
+                <span class="text-danger"
+                    *ngIf="adminloginForm.get('email').touched && adminloginForm.get('email').hasError('email')">
+                   Valid Email Required*
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Password:</label>
+                <input type="password"  class="form-control" placeholder="Enter Your Password *" formControlName="password"/>
+                <span class="text-danger"
+                    *ngIf="adminloginForm.get('password').touched && adminloginForm.get('password').hasError('required')">
+                    Password Required*
+                </span>
+            
+              </div>
+
+              <input type="submit" style="width: 160px" class="btn btn-success" [disabled]="!adminloginForm.valid" value="Login"/>
+            </form>
+            <div>
+               <!-- <a [routerLink]="forgotPassword" style="margin-left: 437px;">Forgot Password</a> -->
+               <button mat-raised-button (click)="onForgotPassword()" style="margin-left: 437px;position: absolute;
+               margin-top: -35px;" color="accent">Forgot Password</button>
+            </div>
+          </div>
+         
+        </div>
+        <mat-progress-spinner  style="margin:0 auto;" mode="indeterminate" *ngIf="fetching">
+        </mat-progress-spinner>
+        <!-- <div *ngIf="fetching" class="text-center">
+          <div class="spinner-border text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div> -->
+  
+      </div>

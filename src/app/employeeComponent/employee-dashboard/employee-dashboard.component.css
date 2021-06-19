@@ -1,0 +1,49 @@
+.example-events {
+    height: 200px;
+    border: 1px solid #555;
+    overflow: auto;
+  }
+
+  .example-month-picker .mat-calendar-period-button {
+    pointer-events: none;
+  }
+  
+  .example-month-picker .mat-calendar-arrow {
+    display: none;
+  }
+
+  .bg-light{background-color: #e3e3e4 !important;
+    box-shadow: 0px 1px 2px 1px #00000059;}
+
+    .mr-auto{margin-right: inherit!important;}
+
+    .top_btn{
+      border: solid 1px #3e7bff;
+    background: #3e7bff;
+    color: #fff;
+    border-radius: 2px;
+    }
+
+    .pfl{
+      border: solid 1px;
+      padding: 0px;
+      margin: 0px;
+      margin-top: 9px;
+      margin-right: 5px;
+      line-height: 21px;
+      border-radius: 4px;
+      padding: 0px 5px;
+      background: #19a2a2;
+      color:white !important;
+    }
+
+    .reset_btn{
+      position: absolute;
+      right: 90px;
+    }
+
+    .lg_out{
+      position: absolute;
+      right: 10px;
+    }
+

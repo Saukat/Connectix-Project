@@ -1,0 +1,248 @@
+
+  <!-- <img src="assets/images/under.jpg" style="width: 99%;height: 90%;">                                                                                                                                                                                                                    > -->
+
+
+<!--
+
+<div class="container-fluid">
+    <form  [formGroup]="ReimbursementForm" (submit)="onAttachement()">
+    <div class="card">
+      <div class="card-header text-center">Claim Reimbursement!! </div>
+      <div class="card-body">
+  
+
+        <div class="row">
+       
+            <div class="col-sm-3">
+                 <mat-form-field appearance="outline">
+                    <mat-label>ID</mat-label>
+                    <input matInput [(ngModel)]="id" formControlName="empId">
+                  
+                  </mat-form-field>
+            </div>
+
+            <div class="col-sm-3">
+              <mat-form-field appearance="outline">
+                 <mat-label>Name</mat-label>
+                 <input matInput [(ngModel)]="name" formControlName="empName">
+               
+               </mat-form-field>
+         </div>
+  
+        
+            <div class="col-sm-3">
+                 <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input matInput  formControlName="title">
+                  
+                  </mat-form-field>
+            </div>
+
+            <div class="col-sm-4">
+                 <mat-form-field appearance="outline">
+                    <mat-label>Subject</mat-label>
+                    <textarea matInput  formControlName="subject"></textarea>
+                  </mat-form-field>
+            </div>
+        </div>
+
+                  <div class="row">
+
+                   
+                      <div class="col-sm-3">
+                        <label for="">Bill Date</label>
+                          <input type="date" class="form-control"  formControlName="billDate"/>
+                      </div>
+
+                      <div class="col-sm-3">
+                        <mat-form-field appearance="outline">
+                           <mat-label>Amount</mat-label>
+                           <input matInput  formControlName="amount">
+                         </mat-form-field>
+                     </div>
+
+                     <div class="col-sm-3">
+                      <label for="">HigherAuth Id</label>
+                        <input type="text" class="form-control" [(ngModel)]="HigherAuthId"  formControlName="higherAuth"/>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <mat-form-field appearance="outline">
+                         <mat-label>Higher Auth Name</mat-label>
+                         <input matInput [(ngModel)]="higherAuthNames" formControlName="highAuthName">
+                       </mat-form-field>
+                   </div>
+
+                      <div class="col-sm-4">
+                      <mat-form-field appearance="outline">
+                         <mat-label>Higher Authority Name:</mat-label>
+                         <input matInput  formControlName="amount">
+                       </mat-form-field>
+                   </div> 
+
+                  
+
+
+                   <div class="col-sm-12 table-responsive" formArrayName="itemRows">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="white-space: nowrap;padding-right: 4em;float:center">
+                              <span class="required-field"></span>Attachment Of Bill</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let itemrow of ReimbursementForm.controls.itemRows['controls']; let i=index"  [formGroupName]="i">
+  
+                            <td style="white-space: nowrap;"> 
+                              <input type="file" hidden id="attachmentOfBill{{i}}" formControlName="attachmentOfBill" class="form-control"></td>
+                          
+                            <td> 
+                              <button *ngIf="ReimbursementForm.controls.itemRows.controls.length > 1" (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr><td> <button type="button" hidden (click)="addNewRow()" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td></tr>
+                        </tfoot>
+                      </table>
+                  </div>
+ 
+                </div>
+             
+  
+      </div>
+      <div class="card-footer">
+         <button mat-raised-button color="primary">Claim Reimbursement</button>
+      </div>
+    </div>
+  </form>
+  
+  </div>  -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <h2>Claim Reimbursement!!</h2>
+   
+    <form [formGroup] = "ReimbursementForm" (ngSubmit)="onReimbursementSubmit()">
+    
+        <div class="form-group">       
+            <input type="text" class="form-control" hidden [(ngModel)]="id" placeholder="Enter ID *" formControlName="empId"/>     
+        </div>
+
+        <div class="form-group">       
+          <input type="text" class="form-control" hidden [(ngModel)]="name" formControlName="empName"/>     
+      </div>
+
+
+        <div class="form-group">
+              <label for="">Title:</label>
+              <input type="text"  class="form-control" placeholder="Enter Title *" formControlName="title"/>
+                  <span class="text-danger"
+                      *ngIf="ReimbursementForm.get('title').touched && ReimbursementForm.get('title').hasError('required')">
+                      Title Required*
+                 </span>
+        </div>
+
+              <div class="form-group">
+                  <div  class="sub-heading">Subject</div>
+                  <textarea class ="text-area" style="width: 621px;
+                  height: 100px;" formControlName="subject"></textarea>
+                      <span class="text-danger"
+                          *ngIf="ReimbursementForm.get('subject').touched && ReimbursementForm.get('subject').hasError('required')">
+                          Subject Required*
+                      </span>
+              </div>
+
+        
+       
+            <div class="form-group">
+                <label for="">Bill Date</label>
+                  <input type="date" class="form-control"  formControlName="billDate"/>
+                      <span class="text-danger"
+                          *ngIf="ReimbursementForm.get('billDate').touched && ReimbursementForm.get('billDate').hasError('required')">
+                          Bill Date Required*
+                      </span>
+              </div>
+
+           
+              <div class="form-group">
+                  <label for="">Amount</label>
+                  <input type="input" class="form-control" formControlName="amount" placeholder="Amount"/>
+                  <span class="text-danger"
+                          *ngIf="ReimbursementForm.get('amount').touched && ReimbursementForm.get('amount').hasError('required')">
+                          Amount Required*
+                      </span>
+              </div>
+
+
+              <div class="form-group">
+                <!-- <label for="">HId</label> -->
+                <input type="input" class="form-control" hidden  [(ngModel)]="HigherAuthId"  formControlName="higherAuth"/>
+            </div>
+            
+
+            <div class="form-group">
+              <!-- <label for="">Higher Authority Name</label> -->
+              <input type="input" class="form-control" hidden [(ngModel)]="higherAuthNames" formControlName="highAuthName">
+          </div>
+
+
+
+
+          <div class="col-sm-12 table-responsive" formArrayName="itemRows">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="white-space: nowrap;padding-right: 4em;float:center">
+                    <span class="required-field"></span>Attachment Of Bill
+                  </th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let itemrow of ReimbursementForm.controls.itemRows['controls']; let i=index"  [formGroupName]="i">
+
+                  <td style="white-space: nowrap;"> 
+                    <input type="file"  id="attachmentOfBill{{i}}" (change)="onFileChange($event)" class="form-control">
+                  </td>
+                
+                  <td> 
+                    <button *ngIf="ReimbursementForm['controls'].itemRows['controls'].length > 1" (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr><td> <button type="button"  (click)="addNewRow()" class="btn btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></td></tr>
+              </tfoot>
+            </table>
+        </div>
+        
+          <!-- <div class="form-group">
+            <input type="file" multiple="multiple" (change)="onFileChange($event)" />
+          </div> -->
+          
+        <input type="submit" style="width: 160px" class="btn btn-success" value="Save"/>
+      </form>
+    </div> 

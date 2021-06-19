@@ -1,0 +1,130 @@
+
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Edit Employee Salary Structure!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="editSalaryStructure" (ngSubmit)="onEditSalaryStructureForm()">
+                 
+                 <div class="form-group">
+                    <!-- <label for="">Employee Sal Id:</label> -->
+                    <input type="text" hidden class="form-control" placeholder="Enter Employee Id *" formControlName="saId" />
+                  </div>
+
+                
+                  <div class="form-group">
+                    <!-- <label for="">Employee Id:</label> -->
+                    <input type="text" hidden class="form-control" placeholder="Enter Employee Id *" formControlName="id" />
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="">Basic:</label>
+                    <input type="text"  class="form-control" (keyup)="basicSalryCalculation($event)" placeholder="Enter Basic *" formControlName="basic"/>
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('basic').touched && editSalaryStructure.get('basic').hasError('required')">
+                    Basic Salary Required*
+                </span>
+                  </div>
+
+                  <div class="form-group">    
+                    <label for="">HRA:</label>        
+                     <input type="text" class="form-control" [(ngModel)]="Hra" placeholder="Enter HRA *" formControlName="hra" />
+                     <span class="text-danger"
+                     *ngIf="editSalaryStructure.get('hra').touched && editSalaryStructure.get('hra').hasError('required')">
+                     HRA  Required*
+                 </span>
+                    </div> 
+
+                  <div class="form-group">
+                    <label for="">Conveyance Allowance:</label>
+                    <input type="text" class="form-control" [(ngModel)]="cAlloance" placeholder="Enter Conveyance Allowance" formControlName="conveyanceAllowance" />
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('conveyanceAllowance').touched && editSalaryStructure.get('conveyanceAllowance').hasError('required')">
+                    conveyanceAllowance  Required*
+                </span>
+                  </div> 
+              
+                 <div class="form-group">
+                    <label for="">Other Variable Allowance:</label>
+                    <input type="text"  class="form-control" [(ngModel)]="ovAlloance" placeholder="Enter Other Variable Allowance*" formControlName="otherAllowance"/>
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('otherAllowance').touched && editSalaryStructure.get('otherAllowance').hasError('required')">
+                    OtherAllowance  Required*
+                </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Gross Pay:</label>
+                    <input type="text"  class="form-control" [(ngModel)]="grossPay" placeholder="Enter Gross Pay*" formControlName="grossPay"/>
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('grossPay').touched && editSalaryStructure.get('grossPay').hasError('required')">
+                    GrossPay  Required*
+                </span>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="">Employee's Contribution to EPF</label>
+                     <input type="text" class="form-control"[(ngModel)]="empEpf"  placeholder="Enter Employee's Contribution to EPF *" formControlName="employeeEpf" />
+                     <span class="text-danger"
+                     *ngIf="editSalaryStructure.get('grossPay').touched && editSalaryStructure.get('grossPay').hasError('required')">
+                     GrossPay  Required*
+                 </span>
+                    </div> 
+
+                  <div class="form-group">
+                    <label for="">Employee's Contribution to ESI</label>
+                    <input type="text" class="form-control" [(ngModel)]="empEsi" placeholder="Enter Employee's Contribution to ESI *" formControlName="employeeESI" />
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('employeeESI').touched && editSalaryStructure.get('employeeESI').hasError('required')">
+                    employeeESI  Required*
+                </span>
+                  </div> 
+
+                  <div class="form-group">
+                    <label for="">Net Salary:</label>
+                    <input type="text" class="form-control" [(ngModel)]="netPay" placeholder="Enter NET Salary" formControlName="netSalary" />
+                    <span class="text-danger"
+                    *ngIf="editSalaryStructure.get('netSalary').touched && editSalaryStructure.get('netSalary').hasError('required')">
+                    NetSalary  Required*
+                </span>
+                  </div>
+
+                 <div class="form-group">
+                  <label for="">Employer's Contribution to EPF</label>
+                  <input type="text" class="form-control" [(ngModel)]="emprEpf" placeholder="Enter Employer's Contribution to EPF *" formControlName="employerEpf" />
+                  <span class="text-danger"
+                  *ngIf="editSalaryStructure.get('employerEpf').touched && editSalaryStructure.get('employerEpf').hasError('required')">
+                  EmployerEpf  Required*
+              </span>
+                </div> 
+
+               <div class="form-group">
+                <label for="">Employer's Contribution to ESI</label>
+                <input type="text" class="form-control" [(ngModel)]="emprEsi" placeholder="Enter Employer's Contribution to ESI *" formControlName="employerESI" />
+                <span class="text-danger"
+                *ngIf="editSalaryStructure.get('employerESI').touched && editSalaryStructure.get('employerESI').hasError('required')">
+                EmployerESI  Required*
+            </span>
+              </div> 
+
+             <div class="form-group">
+              <label for="">Total Cost to Company</label>
+              <input type="text" class="form-control" [(ngModel)]="totalCompanyCost" placeholder="Total Cost to Company *" formControlName="totalCostToCompany" />
+              <span class="text-danger"
+              *ngIf="editSalaryStructure.get('totalCostToCompany').touched && editSalaryStructure.get('totalCostToCompany').hasError('required')">
+              TotalCostToCompany  Required*
+          </span>
+            </div> 
+                  
+              <input type="submit" style="width: 266px;" class="btn btn-success" [disabled]="!editSalaryStructure.valid"  value="Upadate Salary Structure"/>
+            </form>
+          </div>
+         
+        </div>
+      </div>

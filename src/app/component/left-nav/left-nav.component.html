@@ -1,0 +1,70 @@
+<div id="layoutSidenav" style="margin-top: 56px;" *ngIf="show">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">                   
+                    <a class="nav-link" routerLink="../dashboard" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">                       
+                        <div class="sb-nav-link-icon" ><i class="fa fa-tachometer"></i></div>
+                        Dashboard
+                    </a>
+          
+                    
+                    <a class="nav-link" routerLink="employee-register" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Add Employee
+                    </a>
+
+                    <a class="nav-link" routerLink="allEmp" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-chart-area"></i></div>
+                        All Employee List
+                     </a>
+
+                    <a class="nav-link" routerLink="payroll" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Payroll
+                    </a>
+
+                    <a class="nav-link" routerLink="payrollAll" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Payroll Report
+                    </a>
+
+                    <a class="nav-link" routerLink="adminLeaveApproval" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Leave Approval
+                    </a>
+                   
+                    <a class="nav-link" routerLink="leaveList" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Leave List
+                    </a>
+
+                    <a class="nav-link" routerLink="taskList" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        All Task List
+                    </a>
+
+                    <a class="nav-link" routerLink="reimbRequest" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Reim Request
+                    </a>
+
+                    <a class="nav-link" routerLink="reimbList" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Reim List
+                    </a>
+
+                    <a class="nav-link" routerLink="reimbReport" routerLinkActive="active">
+                        <div class="sb-nav-link-icon"><i class="fa fa-table"></i></div>
+                        Reim Report
+                    </a>
+
+                </div>
+            </div>
+            <div class="sb-sidenav-footer">
+                <div class="small">Logged in as:</div>
+               Connectix
+            </div>
+        </nav>
+    </div>
+</div>

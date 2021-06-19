@@ -1,0 +1,490 @@
+ <!--Employee Details-->
+
+ <div class="container">
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded ">
+                     <h3 class="h4 text-info text-center">Employee Details  !</h3>
+                      <hr/>
+                
+                     <div class="row">
+                          <div class="col-md-8">
+                            <div>
+                                <label><b>Employee ID: </b></label> {{empArr_StringData?.employeeId}}
+                            </div>
+                            
+                            <div>
+                                <label><b>Name: </b></label> {{empArr_StringData?.name}}
+                            </div>
+                            <div>
+                                <label><b>Email: </b></label> {{empArr_StringData?.email}}
+                            </div>
+                            <div>
+                                <label><b>HireDate: </b></label> {{empArr_StringData?.hireDate}}
+                            </div>
+                            <div>
+                                <label><b>jobTitle: </b></label> {{empArr_StringData?.jobTitle}}
+                            </div>
+                            <div>
+                                <label><b>Location: </b></label> {{empArr_StringData?.location}}
+                            </div>
+                            <div>
+                                <label><b>Department: </b></label> {{empArr_StringData?.department}}
+                            </div>
+                            <div>
+                                <label><b>RollType: </b></label> {{empArr_StringData?.rollType}}
+                            </div>
+                            <div>
+                                <label><b>Status: </b></label> {{empArr_StringData?.status}}
+                            </div>
+                            <div>
+                                <label><b>Gender: </b></label> {{empArr_StringData?.gender}}
+                            </div> 
+                            <div>
+                                <label><b>Report To Higher Authority: </b></label> {{authorityData}}
+                            </div> 
+                            
+                                        
+                          </div>
+
+                          <div class="col-md-4">
+                            <div>
+                                <td>
+                                    <img [src]="empArr_StringData?.photo" alt="Image Source" style="width:80px;height:80px">
+                                  </td>
+                            </div> <br>
+                              <button (click)="EditEmployee(empArr_StringData)" class="btn btn-primary">Edit Profile</button><br><br>
+                         
+                          </div>
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Compensation & Prequisites-->
+<div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                     <h3 class="h4 text-info text-center">Compensation & Prequisites !</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+                                <div>
+                                    <label><b>Employee Id: </b></label> {{empArr_StringData?.employeeId}}
+                                </div>
+
+                                <div *ngIf="isSalayStructure; else nullSalary">
+                                    <div>
+                                        <label><b>Annual Salary: </b></label> <b>₹</b>{{isSalayStructure[0]?.totalCostToCompany * 12}}
+                                    </div>
+                                </div>
+                                <ng-template #nullSalary>
+                                    <div>
+                                        <label><b>Annual Salary: </b></label> <b>₹</b>{{isSalayStructure}}
+                                    </div>
+                                </ng-template>
+
+                                
+
+                         </div>
+                           
+                          <div class="col-md-4">
+                              <button (click)="EditSalryStructure(isSalayStructure)" class="btn btn-primary">Edit Profile</button><br><br>
+                          </div>
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+<!--Non-Opfin Payroll ib Current F.Y-->
+<!-- <div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Payroll in Current F.Y !</h3>
+                      <hr/>
+                 
+                     <div class="row">
+                          <div class="col-md-8">
+                                <div>
+                                    <label><b>Employee Id: </b></label> {{empArr_StringData[0].id}}
+                                </div>
+                                <div *ngIf="isFiscalYear; else nullFiscalYear">
+                                    <div>
+                                        <label><b>Texable Salary: </b></label>{{isFiscalYear[0].texable_salary}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Exemption:</b></label>{{isFiscalYear[0].exemption}}
+                                    </div>
+                  
+                                    <div>
+                                        <label><b>TDS Deducted:</b></label> {{isFiscalYear[0].tds_deducted}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Prevoius Employer(s) Texable Salary:</b></label> {{isFiscalYear[0].prev_emp_texable_sal}}
+                                    </div>
+                                
+                                    <div>
+                                        <label><b>Prevoius Employer(s) TDS Deducted:</b></label> {{isFiscalYear[0].prev_emp_tds_deducted}}
+                                    </div>
+                                </div>
+                                <ng-template #nullPayment>
+                                    <div>
+                                        <label><b>Texable Salary: </b></label>{{isFiscalYear}} 
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Exemption:</b></label>{{isFiscalYear}} 
+                                    </div>
+    
+                                    <div>
+                                        <label><b>TDS Deducted:</b></label> {{isFiscalYear}} 
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Prevoius Employer(s) Texable Salary:</b></label> {{isFiscalYear}} 
+                                    </div>
+                                
+                                    <div>
+                                        <label><b>Prevoius Employer(s) TDS Deducted:</b></label>{{isFiscalYear}} 
+                                    </div>
+                                </ng-template>
+                                
+                              
+                         </div>
+                           
+                          <div class="col-md-4">
+                              <button (click)="EditFiscalYear(isFiscalYear)" class="btn btn-primary">Edit Profile</button><br><br>
+                          </div>
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--Payment Information-->
+<div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                     <h3 class="h4 text-info text-center">Payment Information !</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+                                <div>
+                                    <label><b>Employee Id: </b></label> {{empArr_StringData?.employeeId}}
+                                </div>
+                                <div *ngIf="isPayment; else nullPayment">
+                                    <div>
+                                        <label><b>Beneficiary Name:</b></label>{{empArr_StringData?.name}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Aadhar: </b></label>{{isPayment[0]?.aadhar}}
+                                    </div>
+                                     
+                                    <div>
+                                        <label><b>Account Number </b></label> {{isPayment[0]?.accNo}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Bank Name </b></label> {{isPayment[0]?.bankName}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>IFSC Code: </b></label> {{isPayment[0]?.ifscCode}}
+                                    </div>
+                                
+                                    <div>
+                                        <label><b>ESI Number </b></label> {{isPayment[0]?.esiNo}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>EPFO</b></label> {{isPayment[0]?.epfo}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Branch: </b></label>{{isPayment[0]?.branch}}
+                                    </div>
+                                    
+                                    <div>
+                                        <label><b>Address: </b></label>{{isPayment[0]?.address}}
+                                    </div> 
+
+                                </div> 
+                                <ng-template #nullPayment>
+                                    <div>
+                                        <label><b>Beneficiary Name: </b></label>{{isPayment}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Aadhar: </b></label>{{isPayment}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Bank Name </b></label>{{isPayment}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>IFSC Code: </b></label> {{isPayment}}
+                                    </div>
+                                
+                                    <div>
+                                        <label><b>EPFO </b></label> {{isPayment}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Branch: </b></label>{{isPayment}}
+                                    </div>
+                                    
+                                    <div>
+                                        <label><b>Address: </b></label>{{isPayment}}
+                                    </div>
+                                </ng-template>     
+                         </div>
+                           
+                          <div class="col-md-4">
+                              <button (click)="EditPaymentInfo(isPayment)" class="btn btn-primary">Edit Profile</button><br><br>
+                          </div>
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!--Leave and attendance-->
+<div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                     <h3 class="h4 text-info text-center">Leave and Attendance</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+                            <div>
+                                <label><b>Employee Id: </b></label> {{empArr_StringData?.employeeId}}
+                            </div>
+
+                            <div *ngIf="isAttendance; else nullAttendance">
+
+                                <div>
+                                    <label><b>Leave Taken: </b></label> {{isAttendance[0]?.leaveTaken}}
+                                </div>
+                                <div>
+                                    <label><b>Remaining: </b></label> {{isAttendance[0]?.remain}}
+                                </div>
+                                <div>
+                                    <label><b>Total Leave: </b></label> {{isAttendance[0]?.totalLeave}}
+                                </div>
+                            </div> 
+
+                            <ng-template #nullAttendance>
+                                <div>
+                                    <label><b>Leave Taken: </b></label> {{isAttendance?.leaveTaken}}
+                                </div>
+                                <div>
+                                    <label><b>Remaining: </b></label> {{isAttendance?.remain}}
+                                </div>
+                                <div>
+                                    <label><b>Total Leave: </b></label> {{isAttendance?.totalLeave}}
+                                </div>
+                            
+                            </ng-template>     
+                      </div>
+
+                        <div class="col-md-4">
+                            <button (click)="editAttendance(isAttendance)" class="btn btn-primary">Edit Attendance</button><br><br>
+                        </div>
+                         
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!--Provident Fund Professional Tax & ESI-->
+<!-- <div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Provident Fund Professional Tax & ESI !</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+                                <div>
+                                    <label><b>Employee Id: </b></label> {{empArr_StringData[0].id}}
+                                </div>
+                                <div *ngIf="isProvidentFund; else nullProvidentFund">
+                                   
+                                    <div>
+                                        <label><b>PF Status: </b></label>{{isProvidentFund[0].pfStatus}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Pf UAN: </b></label>{{isProvidentFund[0].pfUan}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Professional Tax:</b></label> {{isProvidentFund[0].professionalTax}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>ESIC IP Number: </b></label> {{isProvidentFund[0].EsicIP}}
+                                    </div> 
+                                </div>   
+                               
+                                <ng-template #nullProvidentFund>
+                                    <div>
+                                        <label><b>PF Status: </b></label>{{isProvidentFund}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Pf UAN: </b></label>{{isProvidentFund}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>Professional Tax:</b></label> {{isProvidentFund}}
+                                    </div>
+    
+                                    <div>
+                                        <label><b>ESIC IP Number: </b></label>{{isProvidentFund}}
+                                    </div>
+                                </ng-template>
+
+                               
+                              
+                         </div>
+                           
+                          <div class="col-md-4">
+                              <button (click)="EditProvidentFund(isProvidentFund)" class="btn btn-primary">Edit Profile</button><br><br>
+                          </div>
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--other Information-->
+ <!-- <div class="row" style="margin-top: -51px">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Other Information  !</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+                                <div>
+                                    <label><b>Employee Id: </b></label> {{empArr_StringData[0].id}}
+                                </div>
+                            
+                                <div>
+                                    <label><b>Name: </b></label> {{empArr_StringData[0].name}}
+                                </div>
+                                
+                                <div *ngIf="isRecords; else nullRecords">
+                                    <div>
+                                        <label><b>Father's Name: </b></label>{{isRecords[0].father}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Date Of Birth: </b></label> {{isRecords[0].dob}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Phone: </b></label>{{isRecords[0].phone}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Email: </b></label>{{isRecords[0].email}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Present Address: </b></label> {{isRecords[0].presentAddr}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Permanent Address: </b></label> {{isRecords[0].permanentAddr}}
+                                    </div>
+
+                                  </div>
+
+                                <ng-template #nullRecords>
+                                    <div>
+                                        <label><b>Father's Name: </b></label>{{isRecords}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Date Of Birth: </b></label> {{isRecords}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Phone: </b></label>{{isRecords}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Email: </b></label>{{isRecords}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Present Address: </b></label> {{isRecords}}
+                                    </div>
+
+                                    <div>
+                                        <label><b>Permanent Address: </b></label> {{isRecords}}
+                                    </div>
+                                  </ng-template>
+
+
+                                  
+                           
+                         </div>
+                           
+                           <div class="col-md-4">
+                              <button (click)="EditOtherInfo(isRecords)" class="btn btn-primary">Edit Profile</button><br><br>
+                          </div> 
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+        
+    </div>
+</div>  -->
+
+
+
+<!-- {{isRecords}} -->
+
+</div>

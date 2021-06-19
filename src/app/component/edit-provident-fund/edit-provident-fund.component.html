@@ -1,0 +1,55 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Edit Employee ProvidentFund!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="editProvidentFund" (ngSubmit)="onEditProvidentFundForm()">
+                 
+                 <div class="form-group">
+                    <label for="">Employee Id:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Employee Id *" formControlName="id" />
+                  </div>
+
+                
+                 
+                  <div class="form-group">
+                    <label for="">PF Status:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your PF Status*"  formControlName="pfStatus" />
+                  </div>
+
+        
+
+                  <div class="form-group">
+                    <label for="">PF UAN:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your PF UAN *" formControlName="pfUan"/>
+                  </div>
+
+                
+
+                  <div class="form-group">
+                     <label for="">Professional Tax:</label>
+                     <input type="text" class="form-control" placeholder="Enter PProfessional Tax *" formControlName="professionalTax" />
+                  </div> 
+
+                  <div class="form-group">
+                    <label for="">Professional Tax:</label>
+                    <input type="text" class="form-control" placeholder="Enter ESIC IP Number" formControlName="EsicIP" />
+                 </div> 
+              
+                  
+
+                 
+
+              <input type="submit" style="width: 160px" class="btn btn-success"  value="Save ProvidentFund"/>
+            </form>
+          </div>
+         
+        </div>
+       
+  
+      </div>

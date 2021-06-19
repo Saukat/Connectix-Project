@@ -1,0 +1,62 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Edit Employee Other Information!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="otherInfoEditForm" (ngSubmit)="onOtherInfoEditForm()">
+                 
+                 <div class="form-group">
+                    <label for="">Employee Id:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Employee Id *" formControlName="id" />
+                  </div>
+
+                 <!-- <div class="form-group">
+                    <label for="">Full Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Full Name *" formControlName="name" />
+                  </div> -->
+                 
+                  <div class="form-group">
+                    <label for="">Father's Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Father's Name*"  formControlName="father" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">DOB:</label>
+                    <input type="date" class="form-control"  formControlName="dob" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">Phone No.:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your Phone Number *" formControlName="phone"/>
+                  </div>
+
+                
+
+                  <div class="form-group">
+                     <label for="">Personal Email:</label>
+                     <input type="text" class="form-control" placeholder="Enter Personal Email *" formControlName="email" />
+                  </div> 
+              
+                  <div class="form-group">
+                      <div  class="sub-heading">Present Address</div>
+                      <textarea class ="text-area" formControlName="presentAddr"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                        <div  class="sub-heading">Permanent Address</div>
+                        <textarea class ="text-area" formControlName="permanentAddr"></textarea>
+                  </div>
+
+              <input type="submit" style="width: 160px" class="btn btn-success"  value="Save Other info"/>
+            </form>
+          </div>
+         
+        </div>
+       
+  
+      </div>

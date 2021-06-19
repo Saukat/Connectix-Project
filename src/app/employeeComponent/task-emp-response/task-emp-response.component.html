@@ -1,0 +1,129 @@
+<div class="row" style="margin-top: 28px;margin-left: 302px;">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Project Report Form!!</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+        
+                                <div>
+                                    <div>
+                                        <label><b>Title: </b></label>{{getOneTaskData?.title}}
+                                    </div>
+                                    <div>
+                                        <label><b>Higher Authority: </b></label>{{getOneTaskData?.higherAuthName}}
+                                    </div>
+                                    <div>
+                                        <label><b>Project Name: </b></label>{{getOneTaskData?.projectName}}
+                                    </div>
+                                    <div>
+                                        <label><b>Description: </b></label>{{getOneTaskData?.description}}
+                                    </div>
+
+                                    <div>
+                                      <label><b>Expected Time(Hours): </b></label>{{getOneTaskData?.timeAndDate}}
+                                    </div>
+                                    
+                                    <div>
+                                        <label><b>Status: </b></label>{{getOneTaskData?.status}}
+                                    </div>
+                                   <div>
+                                        <label><b>Employee Remark: </b></label>{{getOneTaskData?.empRemark}}
+                                    </div>
+                                    <div>
+                                        <label><b>Completed Date And Time: </b></label>{{getOneTaskData?.completeDateAndTime}}
+                                    </div>
+                                     <!-- <div>
+                                        <label><b>Substitute: </b></label>{{getOneTaskData.backupEmpId}}
+                                    </div>
+                                    <div>
+                                      <label><b>Remark: </b></label>{{getOneTaskData.completeDateAndTime}}
+                                  </div> -->
+                                </div>
+
+                          </div>
+                          <!-- [disabled]="!status" -->
+                          <div class="col-md-4">
+                            <button (click)="openDialog(template)"  mat-raised-button color="primary">Update Report</button><br><br>
+                            <!-- <button (click)="nonApprovalReport(nonApprove)" class="btn btn-primary">Reject</button><br><br> -->
+                         </div>
+                         
+                         
+                           
+                       
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+
+  <!--approve-->
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Approval form!!</h4>
+     
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="empTaskRemarkForm" (ngSubmit)="onEmpTaskRemark()">
+        
+        <div class="form-group">
+        
+          <input type="text" hidden class="form-control" [(ngModel)]="taskId" placeholder="Enter Emp ID *" formControlName="id"/>
+       
+        </div>
+
+
+        <div class="form-group">
+            <label for="">Status:</label><br>
+            <input  type="radio" value="Work Pending" name="status" formControlName="status"> Work Pending
+            <input type="radio" value="Completed" name="status" formControlName="status"> Completed
+        
+            <span class="text-danger"
+                    *ngIf="empTaskRemarkForm.get('status').touched && empTaskRemarkForm.get('status').hasError('required')">
+                    Status Required*
+            </span>
+        
+
+        <div class="form-group">
+            <div  class="sub-heading">Remark</div>
+            <textarea class ="text-area" formControlName="empRemark"></textarea>
+              <span class="text-danger"
+                  *ngIf="empTaskRemarkForm.get('empRemark').touched && empTaskRemarkForm.get('empRemark').hasError('required')">
+                  Remark Required*
+              </span>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div  class="sub-heading">Time Taken</div>
+            <textarea class ="text-area" formControlName="completeDateAndTime"></textarea>
+              <span class="text-danger"
+                  *ngIf="empTaskRemarkForm.get('completeDateAndTime').touched && empTaskRemarkForm.get('completeDateAndTime').hasError('required')">
+                  Time Required*
+              </span>
+       </div>
+
+       <div class="row">
+          <div class="col-md-6">
+              <input type="submit" style="width: 160px" mat-raised-button color="primary"  [disabled]="!empTaskRemarkForm.valid" value="Submit"/>
+          </div>
+          <div class="col-md-6">
+              <div mat-dialog-actions style="margin-top: -9px;margin-left: 59px">
+                  <button mat-button mat-dialog-close>Close</button>
+                </div>
+          </div>
+       
+     </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+

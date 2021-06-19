@@ -1,0 +1,84 @@
+
+
+
+    <div>
+        <form [formGroup]="payrollReportForm" (ngSubmit)="onPayrollReportForm()">
+
+        
+        <label for="">Select Month And Year:</label><br>
+      
+        <select class="form-select" (change)="monthFun($event)">
+          <option>--Months--</option>
+            <option value="JANUARY">JANUARY</option>
+            <option value="FEBRUARY">FEBRUARY</option>
+            <option value="MARCH">MARCH</option>
+            <option value="APRIL">APRIL</option>
+            <option value="MAY">MAY</option>
+            <option value="JUNE">JUNE</option>
+            <option value="JULY">JULY</option>
+            <option value="AUGUST">AUGUST</option>
+            <option value="SEPTEMBER">SEPTEMBER</option>
+            <option value="OCTOBER">OCTOBER</option>
+            <option value="NOVEMBER">NOVEMBER</option>
+            <option value="DECEMBER">DECEMBER</option>
+        </select>
+      
+        <select class="form-select" (change)="yearFun($event)">
+          <option>--Years--</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+          <option value="2031">2031</option>
+          <option value="2032">2032</option>
+      </select>
+      <input type="text" class="form-control" style="width: 244px;" [(ngModel)]="monthAndYears" formControlName="salaryMonth"/>
+      <input type="submit" style="width: 160px" class="btn btn-success"  value="Payroll Report"/>
+
+      </form >
+    </div>
+
+
+
+    
+<div class="container" *ngIf="fetching">
+    <a (click)="dynamicDownloadTxt()">
+        <div></div>
+        <span class="btn btn-info" style="margin-left: 362px;">download Txt</span></a>
+    <div class="form-group">
+        
+         <ul>
+            <li>
+                <!-- <span>{{fhrData}}</span><br> -->
+                <!-- <span><b>FHR</b></span>|<span>15/08/03/2020</span>|<span><Cutt-off</span>|<span><b>{{totalcost}}</b></span>|INR|<span>006105027372</span>|<span>00111^</span> -->
+                {{fhrData}}
+            </li>
+            <li>
+                <!-- <span>{{mdrData}}</span> totalcost -->
+                <!-- <span><b>MDR</b></span>|<span #dataa>006105027372</span>|<span>0011</span>|<span>570518395</span>|<span #dataa><b>{{totalcost}}</b></span>|INR|<span><b>{{date}}</b></span>|<span>ICICI0000011</span>|<span>WIB^</span> -->
+                {{mdrData}}
+             </li>
+         </ul>
+        <ul *ngFor="let payroll of allDataOfPayroll">
+            <li >
+                
+                <div>
+                    <span><b>MCW</b></span>|<span #dataa>{{payroll.accNo}}</span>|<span><b>0011</b></span>|{{payroll.name}}|<span>{{payroll.netSalary}}</span>|<span><b>INR</b></span>|{{payroll.remark}}|<span><b>ICIC0000011</b></span>|<span>WIB^</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<h2 class="text-center" *ngIf="!fetching">{{noData}}</h2>
+<!-- <mat-progress-spinner  style="margin:0 auto;" mode="indeterminate" *ngIf="fetching">
+</mat-progress-spinner> -->
+<!-- <a (click)="data(dataa)" >download Txt</a> -->
+ 
+<!-- <button (click)="data()">btn</button> -->
+

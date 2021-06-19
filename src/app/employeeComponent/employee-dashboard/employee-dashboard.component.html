@@ -1,0 +1,144 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand"><img src="assets/images/con_logo.png" [routerLink]="['empProfile',id]"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <!-- <li class="nav-item active">
+        <a class="nav-link" (click)="employeeProfile()">Employee Profile</a>
+      </li> -->
+
+      <li>
+        <a class="nav-link pfl" [routerLink]="['empProfile',id]">
+         Profile 
+       </a>
+      </li>
+      
+      
+    <!--
+
+      <li>
+        <a class="nav-link" routerLink="leave">
+          Leave Apply
+       </a>
+      </li>
+
+      <li>
+        <a class="nav-link" routerLink="viewLeave">
+         Leave List
+       </a>
+      </li>
+
+      <li>
+        <a class="nav-link" routerLink="leaveApprove">
+         Approval 
+       </a>
+      </li>
+
+      <li>
+        <a class="nav-link" routerLink="substitute">
+        Substitute
+       </a>
+      </li>
+-->
+
+      <li class="=nav-link">
+        <div class="form-group" style="margin-top: 9px; margin-right:5px;">
+          <!-- <label for="">Select Month Wise</label><br> -->
+          <select class="form-select top_btn" (change)="onSelectCalendar($event)">
+            <option value="null">Payslip </option>
+            <option *ngFor="let data of monthYear; let i = index" [value]="data.salaryMonth">{{data.salaryMonth}}</option>
+
+          </select>
+    </div>
+      </li>
+     
+      <!-- <li>
+        <a class="nav-link" routerLink="reimbursement">
+          Reimbursement 
+       </a>
+      </li> -->
+
+
+
+      <li class="=nav-link">
+        <div class="form-group" style="margin-top: 9px; margin-right:5px;">
+ 
+          <select class="form-select top_btn" (change)="onSelectLeave($event)">
+            <option value="null">--Leave--</option>
+            <option value="1">Leave Apply</option>
+            <option value="2">Leave List</option>
+            <option value="3">Approval</option>
+            <option value="4">Substitute</option>
+          </select>
+       </div>
+      </li>
+
+
+
+
+
+
+
+
+
+
+      <li class="=nav-link">
+        <div class="form-group" style="margin-top: 9px; margin-right:5px;">
+ 
+          <select class="form-select top_btn" (change)="onSelectReim($event)">
+            <option value="null">--Reimbursement--</option>
+            <option value="1">Apply</option>
+            <option value="2">Apply List</option>
+            <option value="3">Request List</option>
+          </select>
+       </div>
+      </li>
+
+     
+    
+      <li class="=nav-link">
+        <div class="form-group " style="margin-top: 9px; margin-right:5px;">
+          <!-- <label for="">Select Month Wise</label><br> -->
+          <select class="form-select top_btn" (change)="onSelectTask($event)">
+            <option value="null">--Task--</option>
+            <option value="1">Add Task</option>
+            <option value="2">Task List</option>
+            <option value="3">My Task List</option>
+            <option value="4">Employee Add Task List</option>
+          </select>
+       </div>
+      </li>
+
+
+
+      
+
+
+
+     
+      
+      <li class="nav-item">
+        <a class="nav-link" ><b>{{name}}</b></a>
+      </li>
+      
+
+
+      <li class="nav-item reset_btn">
+        <a mat-raised-button color="accent"  routerLink="resetPassword">
+          <i class="fa fa-key" aria-hidden="true"></i>Reset Password</a>
+      </li>&nbsp;
+
+      <li class="nav-item lg_out" >
+        <a  mat-raised-button color="warn"  (click)="LogoutAdmin()">Logout</a>
+      </li>
+      
+      
+    </ul>
+   
+  </div>
+</nav>
+<router-outlet></router-outlet>

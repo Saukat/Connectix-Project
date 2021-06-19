@@ -1,0 +1,90 @@
+<mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filter" >
+  </mat-form-field>
+<div class="row">
+      <div class="col-6">
+          <button (click)="payrollProcess()" mat-raised-button color="primary">Payroll Process</button> &nbsp;
+          <button (click)="currentSatus()" [disabled]="this.isDisabled" mat-raised-button color="primary">Final</button>  &nbsp;  
+          <button (click)="dynamicDownloadTxt()" mat-raised-button color="primary">Draft</button>       
+
+      </div>
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name. </th>
+      <td mat-cell *matCellDef="let element">{{element.name}}  </td>
+    </ng-container>
+    
+    <!-- Name Column -->
+    <ng-container matColumnDef="monthlyCtc">
+      <th mat-header-cell *matHeaderCellDef> Monthly CTC </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalCostToCompany}} </td>
+    </ng-container>
+   
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Additions">
+      <th mat-header-cell *matHeaderCellDef> Additions </th>
+      <td mat-cell *matCellDef="let element"> {{element.addition}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="deduction">
+      <th mat-header-cell *matHeaderCellDef> Deduction </th>
+      <td mat-cell *matCellDef="let element"> {{element.deduction}} </td>
+    </ng-container>
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="reimbursements">
+        <th mat-header-cell *matHeaderCellDef> Adjustments If Any </th>
+        <td mat-cell *matCellDef="let element"> {{element.reimbursements}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="netSalary">
+        <th mat-header-cell *matHeaderCellDef> Net Salary </th>
+        <td mat-cell *matCellDef="let element"> {{element.netSalary}} </td>
+      </ng-container>
+      
+      <!-- Weight Column -->
+      <ng-container matColumnDef="remarks">
+        <th mat-header-cell *matHeaderCellDef> Remarks </th>
+        <td mat-cell *matCellDef="let element">{{element.remark}}</td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="grossPay">
+        <th mat-header-cell *matHeaderCellDef> GrossPay </th>
+        <td mat-cell *matCellDef="let element"> {{element.grossPay}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}}</td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Edit </th>
+        <td mat-cell *matCellDef="let element">   </td>
+      </ng-container> -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>edit </th>
+        <td mat-cell *matCellDef="let element">                
+          <button mat-icon-button matTooltip="Click to Edit" [disabled]="isDisabled" (click)="editPayrollDetails(element)" class="iconbutton" color="primary">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>            
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <!-- <mat-paginator [pageSizeOptions]="[10, 1, 2]" showFirstLastButtons></mat-paginator> -->
+  <h2 class="text-center">{{noData}}</h2>
+<mat-progress-spinner  style="margin:0 auto;" mode="indeterminate" *ngIf="fetching">
+</mat-progress-spinner>
+<mat-paginator [pageSizeOptions]="[10, 1, 2]" showFirstLastButtons></mat-paginator>

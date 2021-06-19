@@ -1,0 +1,147 @@
+<div class="row" style="margin-top: 28px;margin-left: 302px;">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-lg-4 ">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+            <h3 class="h4 text-info text-center">Reimbursement Approval Form!!</h3>
+            <hr/>
+  
+            <div class="row">
+              <div class="col-md-8">
+  
+                <div>
+                  <div>
+                    <label><b>Title: </b></label>{{getOneReimData?.title}}
+                  </div>
+                  <div>
+                    <label><b>Employee Name: </b></label>{{getOneReimData?.empName}}
+                  </div>
+                  <div>
+                    <label><b>Subject: </b></label>{{getOneReimData?.subject}}
+                  </div>
+                  <div>
+                    <label><b>Bill Date: </b></label>{{getOneReimData?.billDate}}
+                  </div>
+  
+                  <div>
+                    <label><b>Amount: </b></label>{{getOneReimData?.amount}}
+                  </div>
+  
+                  <div>
+                    <label><b>Status: </b></label>{{getOneReimData?.status}}
+                  </div>
+  
+                  <div>
+                    <label><b>Higher Authority Remark: </b></label>{{getOneReimData?.higherAuthremark}}
+                  </div>
+  
+                  <div>
+                    <label><b>Reimbursement File: </b></label>
+                    <div *ngFor="let data of getOneReimData?.filePath">
+                      <!-- {{data}} -->
+                      <!-- <span class="oi oi-file">s</span> -->
+                      <!-- <i class="far fa-file-pdf">ss</i> -->
+                      <a [href]="data">Download PDF</a>
+  
+  
+                    </div>
+                  </div>
+  
+                  <!--   <div>
+                                          <label><b>Completed Date And Time: </b></label>{{getOneReimData?.completeDateAndTime}}
+                                      </div> -->
+  
+  
+                  <!-- <div>
+                                          <label><b>Substitute: </b></label>{{getOneReimData.backupEmpId}}
+                                      </div>
+                                      <div>
+                                        <label><b>Remark: </b></label>{{getOneReimData.completeDateAndTime}}
+                                    </div> -->
+                </div>
+  
+              </div>
+              <!-- [disabled]="!status" -->
+              <div class="col-md-4">
+                <button (click)="openDialog(template)" mat-raised-button color="primary">Approval Report</button><br><br>
+              </div>
+  
+  
+  
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  <!--approve-->
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Approval form!!</h4>
+  
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="empReimRemarkForm" (ngSubmit)="onReimRemark()">
+  
+        <div class="form-group">
+  
+          <input type="text" hidden class="form-control" [(ngModel)]="reimId" placeholder="Enter Emp ID *"
+            formControlName="id" />
+  
+        </div>
+  
+  
+        <div class="form-group">
+          <label for="">Status:</label><br>
+          <input type="radio" value="Approved" name="status" formControlName="status"> Approved
+          <input type="radio" value="Reject" name="status" formControlName="status"> Reject
+  
+          <span class="text-danger"
+            *ngIf="empReimRemarkForm.get('status').touched && empReimRemarkForm.get('status').hasError('required')">
+            Status Required*
+          </span>
+  
+  
+          <div class="form-group">
+            <div class="sub-heading">Remark</div>
+            <textarea class="text-area" formControlName="higherAuthremark"></textarea>
+            <span class="text-danger"
+              *ngIf="empReimRemarkForm.get('higherAuthremark').touched && empReimRemarkForm.get('higherAuthremark').hasError('required')">
+              Remark Required*
+            </span>
+          </div>
+  
+  
+  
+          <!-- <div class="form-group">
+              <div  class="sub-heading">Time Taken</div>
+              <textarea class ="text-area" formControlName="completeDateAndTime"></textarea>
+                <span class="text-danger"
+                    *ngIf="empReimRemarkForm.get('completeDateAndTime').touched && empReimRemarkForm.get('completeDateAndTime').hasError('required')">
+                    Time Required*
+                </span>
+         </div> -->
+  
+          <div class="row">
+            <div class="col-md-6">
+              <input type="submit" style="width: 160px" mat-raised-button color="primary"
+                [disabled]="!empReimRemarkForm.valid" value="Submit" />
+            </div>
+            <div class="col-md-6">
+              <div mat-dialog-actions style="margin-top: -9px;margin-left: 59px">
+                <button mat-button mat-dialog-close>Close</button>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>

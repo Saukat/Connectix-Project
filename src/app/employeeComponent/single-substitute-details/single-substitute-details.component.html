@@ -1,0 +1,120 @@
+<div class="row" style="margin-top: 28px;margin-left: 302px;">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-lg-4 ">
+                 <div class="shadow-lg p-3 mb-5 bg-white rounded" style="width:486px;;margin-left: 100px;margin-top: 12px;">
+                     <h3 class="h4 text-info text-center">Approve Report!!</h3>
+                      <hr/>
+                   
+                     <div class="row">
+                          <div class="col-md-8">
+        
+                                <div>
+                                    <div>
+                                        <label><b>Title: </b></label>{{substituteData.title}}
+                                    </div>
+                                    <div>
+                                        <label><b>Subject: </b></label>{{substituteData.subject}}
+                                    </div>
+                                    <div>
+                                        <label><b>From: </b></label>{{substituteData.from}}
+                                    </div>
+                                    <div>
+                                        <label><b>To: </b></label>{{substituteData.to}}
+                                    </div>
+                                    <div>
+                                        <label><b>Leave Taken Days: </b></label>{{substituteData.numberOfDays}}
+                                    </div>
+                                    <div>
+                                        <label><b>Leave Type: </b></label>{{substituteData.leaveType}}
+                                    </div>
+                                    <div>
+                                        <label><b>Higher Auth Remark </b></label>{{substituteData.repAuthRemark}}
+                                    </div>
+                                    <div>
+                                        <label><b>Applied By: </b></label>{{substituteData.empId}}
+                                    </div>
+                                    <div>
+                                      <label><b>Remark: </b></label>{{substituteData.backupEmpRemark}}
+                                  </div>
+                                </div>
+
+                          </div>
+
+                          <!-- <div class="col-md-4">
+                            <button (click)="substitueReport(template)" class="btn btn-primary">Response on Approve</button><br><br>
+                          
+                         </div> -->
+                         <div class="col-md-4">
+                            <button mat-raised-button color="primary" [disabled]="!status" (click)="openDialog(template)">Remark</button>
+                         </div>
+                         
+
+                       
+                     </div>
+               </div>
+        
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+
+  <!--approve-->
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Substitute Feedback form!!</h4>
+      <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="leaveSubstituteForm" (ngSubmit)="onleaveSubstitute()">
+        
+        <div class="form-group">
+          <!-- <label for="">Id:  
+          </label> -->
+          <input type="text" hidden class="form-control" [(ngModel)]="id" placeholder="Enter Emp ID *" formControlName="id"/>
+        
+        </div>
+
+
+        <div class="form-group">
+            <div  class="sub-heading">Remark</div>
+            <textarea class ="text-area" formControlName="backupEmpRemark"></textarea>
+              <span class="text-danger"
+                  *ngIf="leaveSubstituteForm.get('backupEmpRemark').touched && leaveSubstituteForm.get('backupEmpRemark').hasError('required')">
+                  repAuthRemark Required*
+              </span>
+        </div>
+       <div class="row">
+            <div class="col-md-6">
+                <input type="submit" style="width: 160px" mat-raised-button color="primary" [disabled]="!leaveSubstituteForm.valid" value="Submit"/>
+            </div>
+            <div class="col-md-6">
+                <div mat-dialog-actions style="margin-top: -9px;margin-left: 59px">
+                    <button mat-button mat-dialog-close>Close</button>
+                  </div>
+            </div>
+           
+       </div>
+      </form>
+    </div>
+  </ng-template>
+
+
+<!--approve-->
+<!-- <ng-template #nonApprove>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Approve form!!</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Plz Approve
+    </div>
+  </ng-template> -->

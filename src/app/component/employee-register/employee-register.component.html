@@ -1,0 +1,144 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0 text-center">Employee SignUp !!</h3>
+           
+          </div>
+          <div class="card-body">
+            <form [formGroup]="employeeRegForm" (ngSubmit)="onEmployeeRegForm()">
+              
+              <div class="form-group">
+                <label for="">Id:
+                  
+                </label>
+                <input type="text"  class="form-control" placeholder="Enter Emp ID *" formControlName="employeeId"/>
+                <span class="text-danger"
+                *ngIf="employeeRegForm.get('employeeId').touched && employeeRegForm.get('employeeId').hasError('required')">
+                ID Required*
+            </span>
+              </div>
+
+                <!-- <div class="form-group">
+                    <label for="">Title:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Your Title *" formControlName="title"/>
+                  </div> -->
+
+                <div class="form-group">
+                    <label for="">Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Name *" formControlName="name" />
+                <span class="text-danger"
+                    *ngIf="employeeRegForm.get('name').touched && employeeRegForm.get('name').hasError('required')">
+                    Name Required*
+                </span>
+                  </div>
+
+              <div class="form-group">
+                <label for="">Email:</label>
+                <input type="text" class="form-control" placeholder="Enter Your Email *" formControlName="email" />
+                <span class="text-danger"
+                *ngIf="employeeRegForm.get('email').touched && employeeRegForm.get('email').hasError('required')">
+                Email Required*
+            </span>
+            <span class="text-danger"
+                *ngIf="employeeRegForm.get('email').touched && employeeRegForm.get('email').hasError('email')">
+               Valid Email Required*
+            </span>
+           </div>
+
+              <div class="form-group">
+                <label for="">Hire Date:</label>
+                <input type="date" class="form-control"  formControlName="hireDate" />
+              <span class="text-danger"
+                *ngIf="employeeRegForm.get('hireDate').touched && employeeRegForm.get('hireDate').hasError('required')">
+                HireDate Required*
+            </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Job Title:</label>
+                <input type="text" class="form-control" placeholder="Enter Your Job Title *"  formControlName="jobTitle" />
+            <span class="text-danger"
+                *ngIf="employeeRegForm.get('jobTitle').touched && employeeRegForm.get('jobTitle').hasError('required')">
+                Job Title Required*
+            </span>
+              </div>
+              
+              <div class="form-group">
+                <label for="">Location:</label>
+                <input type="text"  class="form-control" placeholder="Enter Your location *" formControlName="location"/>
+                <span class="text-danger"
+                  *ngIf="employeeRegForm.get('location').touched && employeeRegForm.get('location').hasError('required')">
+                  Location Required*
+                 </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Department:</label>
+                <input type="text"  class="form-control" placeholder="Enter Your Department *" formControlName="department"/>
+                <span class="text-danger"
+                *ngIf="employeeRegForm.get('department').touched && employeeRegForm.get('department').hasError('required')">
+                Department Required*
+               </span>
+              
+              </div>
+
+             
+              <div class="form-group">
+                <label for="">Roll Type:</label>
+                <input type="text"  class="form-control" placeholder="Enter Your Roll type *" formControlName="rollType"/>
+                <span class="text-danger"
+                *ngIf="employeeRegForm.get('rollType').touched && employeeRegForm.get('rollType').hasError('required')">
+                RollType Required*
+               </span>
+              </div>
+
+              <div class="form-group">
+                <label for="">Gender:</label><br>
+                <input id="male" type="radio" value="male" name="gender" formControlName="gender"> Male
+                <input id="male" type="radio" value="female" name="gender" formControlName="gender"> Female
+             
+                <span class="text-danger"
+                *ngIf="employeeRegForm.get('gender').touched && employeeRegForm.get('gender').hasError('required')">
+                Gender Required*
+               </span>
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="">Upload Photo</label>
+                <img [src]="url" style="width: 100px;height: 100px;" alt="wwww"  >
+                <input type="file" id="pl" (change)="selectFile($event)" formControlName="images"/>
+              </div> -->
+
+              <div>
+                <td>
+                  <img [src]="photo" alt="Image Source" style="width:80px;height:80px">
+                </td>
+                <div>
+                  <input type="file" (change)="onFileSelected($event)"/>
+                </div>
+              </div>
+           <br>
+             <div class="form-group">
+               <label for="">Select Higher Authority:</label><br>
+              <select class="form-select" formControlName="reportHighAuth">
+                <option *ngFor="let data of adminIdAndName; let i = index" [value]="data.id">{{data.email}}</option>
+                <option *ngFor="let data of empIdAndName; let i = index" [value]="data.id">{{data.name}}</option>
+              </select> 
+              <span class="text-danger"
+                *ngIf="employeeRegForm.get('reportHighAuth').touched && employeeRegForm.get('reportHighAuth').hasError('required')">
+                Higher Authority Required*
+               </span>
+             </div>
+
+              <input type="submit" style="width: 160px" class="btn btn-success" [disabled]="!employeeRegForm.valid" value="Register"/>
+            </form>
+            <span class="badge badge-danger text-white text-center" *ngIf="!islogin">{{status}}</span>
+          </div>
+         
+        </div>
+       
+  
+      </div>

@@ -1,0 +1,28 @@
+.container{
+    border-style: solid ;
+}
+table, th, td {
+    border: 1px solid black;
+    padding: 2px;
+  }
+.table thead th{
+    border-bottom: 1px solid #000000!important;
+  }
+
+td:last-child {
+    width: 130px;
+}
+.tbl_r td:last-child{
+    text-align:right!important;
+}
+
+.text-center{
+    text-align: center!important;
+}
+
+@media print{
+
+    .table-bordered{
+        border:solid 1px #000;
+    }
+}

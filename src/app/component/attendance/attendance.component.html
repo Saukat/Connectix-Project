@@ -1,0 +1,80 @@
+
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Employee Attendance!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="attendanceData" (ngSubmit)="onAttendanceForm()">
+
+              <div class="form-group">
+                <!-- <label for="">Employee Id:</label> -->
+                <input type="text" hidden  class="form-control" [(ngModel)]="id" formControlName="attendEmpId" />
+              </div>
+                 
+                 <!-- <div class="form-group">
+              
+                    <input type="text" hidden class="form-control"  placeholder="Enter Attendance Id *" formControlName="id" />
+                  </div> -->
+                 
+                  <!-- <div class="form-group">
+                   
+                    <input type="text" class="form-control" hidden placeholder="Enter Employee Id *" formControlName="attendEmpId" />
+                  </div> -->
+                
+                 
+                  <div class="form-group">
+                    <!-- <label for="">TotalDay Of Month :</label> -->
+                    <input type="text" class="form-control" hidden  formControlName="totalDayOfMonth" />
+                    <!-- <span class="text-danger"
+                    *ngIf="EditPaymentInfoData.get('aadhar').touched && EditPaymentInfoData.get('totalDayOfMonth').hasError('required')">
+                    Aadhar Required*
+                </span> -->
+                  </div>
+
+                  <div class="form-group">
+                    <label for="">leave Taken:</label>
+                    <input type="text"  class="form-control" placeholder="Enter leaveTaken *" formControlName="leaveTaken"/>
+                    <!-- <span class="text-danger"
+                    *ngIf="EditAttendanceData.get('leaveTaken').touched && EditAttendanceData.get('leaveTaken').hasError('required')">
+                    leaveTaken. Required*
+                </span> -->
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="">Remain Leave:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Remain leave *" formControlName="remain"/>
+                    <!-- <span class="text-danger"
+                    *ngIf="EditAttendanceData.get('remain').touched && EditAttendanceData.get('remain').hasError('required')">
+                    Remain leave Required*
+                </span> -->
+                  </div>
+
+                
+
+  
+
+                  <div class="form-group">
+                    <label for="">Total Leave:</label>
+                    <input type="text" class="form-control" placeholder="Enter totalLeave " formControlName="totalLeave" />
+                    <!-- <span class="text-danger"
+                    *ngIf="EditAttendanceData.get('totalLeave').touched && EditAttendanceData.get('totalLeave').hasError('required')">
+                    Total Leave Required*
+                </span> -->
+                  </div> 
+
+                 
+
+              <input type="submit" style="width: 160px" class="btn btn-success"  value="Save Attendance"/>
+            </form>
+          </div>
+         
+        </div>
+       
+  
+      </div>

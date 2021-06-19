@@ -1,0 +1,57 @@
+
+<div class="py-5">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+          <div class="card-header">
+            <h4 class="mb-0 text-center">Current F.Y!!</h4>
+            <!-- <span class="card bg-danger text-white text-center" *ngIf="!islogin">Invalid Email and Password!!</span> -->
+          </div>
+          <div class="card-body">
+            <form [formGroup]="editFiscalYearData" (ngSubmit)="onEditFiscalYearForm()">
+                 
+                 <div class="form-group">
+                    <label for="">Employee Id:</label>
+                    <input type="text" class="form-control"  placeholder="Enter Employee Id *" formControlName="id" />
+                  </div>
+
+                 
+                 
+                  <div class="form-group">
+                    <label for="">Texable Salary:</label>
+                    <input type="text" class="form-control" placeholder="Enter Your Texable_salary*"  formControlName="texable_salary" />
+                  </div>
+
+        
+
+                  <div class="form-group">
+                    <label for="">Exemption:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Exemption *" formControlName="exemption"/>
+                  </div>
+
+                
+
+                  <div class="form-group">
+                     <label for="">TDS Deducted:</label>
+                     <input type="text" class="form-control" placeholder="Enter Tds_deducted *" formControlName="tds_deducted" />
+                  </div> 
+
+                  <div class="form-group">
+                    <label for="">Prev Empployee Texable sal:</label>
+                    <input type="text" class="form-control" placeholder="Enter Prev_emp_texable_sal " formControlName="prev_emp_texable_sal" />
+                 </div> 
+
+                 <div class="form-group">
+                    <label for="">Prev Empployee Tds Deducted:</label>
+                    <input type="text"  class="form-control" placeholder="Enter Prev_emp_ds_deducted *" formControlName="prev_emp_tds_deducted"/>
+                  </div>
+
+
+              <input type="submit" style="width: 160px" class="btn btn-success"  value="Update F.Y"/>
+            </form>
+          </div>
+         
+        </div>
+       
+  
+      </div>
